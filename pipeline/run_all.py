@@ -8,12 +8,12 @@ import os
 import sys
 import traceback
 
-from . import common, cot, fred, gld_holdings, manual_check, signals, sina, yahoo
+from . import common, cot, fred, gld_holdings, manual_check, markets, signals, sina
 
 MODULES = [
     ("fred", fred),
     ("sina", sina),
-    ("yahoo", yahoo),
+    ("markets", markets),
     ("cot", cot),
     ("gld_holdings", gld_holdings),
     ("manual", manual_check),

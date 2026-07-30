@@ -20,6 +20,7 @@ SERIES = [
     ("FEDFUNDS", "monthly_fred"),        # 有效联邦基金利率
     ("BAMLH0A0HYM2", "daily"),           # 高收益债 OAS 利差
     ("DCOILWTICO", "daily"),             # WTI 油价(地缘代理)
+    ("NASDAQCOM", "daily"),              # 纳斯达克综合指数(Yahoo 拦数据中心 IP,用 FRED 版)
 ]
 
 URL = "https://fred.stlouisfed.org/graph/fredgraph.csv"

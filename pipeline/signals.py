@@ -26,8 +26,7 @@ def _load_fred(series_id):
 
 def _load_market(filename):
     path = os.path.join(common.DATA, "market", filename)
-    return [{"date": r["date"], "open": float(r["open"]), "high": float(r["high"]),
-             "low": float(r["low"]), "close": float(r["close"])}
+    return [{"date": r["date"], "close": float(r["close"])}
             for r in common.read_csv_dicts(path)]
 
 
@@ -108,9 +107,9 @@ def compute(status):
     dgs10 = _load_fred("DGS10")
     hy = _load_fred("BAMLH0A0HYM2")
     wti = _load_fred("DCOILWTICO")
-    gc = _load_market("gc_daily.csv")
+    gold = _load_market("gold_usd_daily.csv")   # LBMA PM 定盘价(USD)
     copx = _load_market("copx_daily.csv")
-    ixic = _load_market("ixic_daily.csv")
+    ixic = [{"date": d, "close": v} for d, v in _load_fred("NASDAQCOM")]
     cu = _load_market("cu0_daily.csv")
     cot_gold = _load_cot("gold_legacy.csv")
     etf_flows = _load_manual("gold_etf_flows.json")
@@ -133,7 +132,7 @@ def compute(status):
     scenario = _scenario(th, today, wti, dgs10, nas, capex_sig)
 
     # ===== 黄金区 =====
-    g_ema = _gold_ema(th, today, gc)
+    g_ema = _gold_ema(th, today, gold)
     g_net = _gold_net_long(th, today, cot_gold)
     g_oi = _gold_oi(th, today, cot_gold)
     g_etf = _gold_etf(th, today, etf_flows)
@@ -377,22 +376,22 @@ def _scenario(th, today, wti, dgs10, nas, capex_sig):
 
 # ---------- 黄金区 ----------
 
-def _gold_ema(th, today, gc):
+def _gold_ema(th, today, gold):
     n = th["gold"]["ema_period"]
-    closes = [r["close"] for r in gc]
+    closes = [r["close"] for r in gold]
     if len(closes) < n + 1:
-        return _gray("gold_ema", "gold", "金价 vs EMA200", "GC=F 数据不足")
-    stale = _is_stale(gc[-1]["date"], "daily", th, today)
+        return _gray("gold_ema", "gold", "金价 vs EMA200", "国际金价数据不足")
+    stale = _is_stale(gold[-1]["date"], "daily", th, today)
     e = ema(closes, n)[-1]
     dev = (closes[-1] / e - 1) * 100
     above = closes[-1] > e
     light = "green" if above else "red"
     value = "站上长期趋势线" if above else "趋势线下方"
-    detail = (f"GC=F 收盘 {closes[-1]:,.1f} vs EMA{n} {e:,.1f},偏离 {dev:+.1f}%。"
-              "文章:黄金趋势性极强,均线上下区别巨大")
+    detail = (f"国际金价(LBMA PM){closes[-1]:,.1f} vs EMA{n} {e:,.1f},"
+              f"偏离 {dev:+.1f}%。文章:黄金趋势性极强,均线上下区别巨大")
     return _sig("gold_ema", "gold", f"金价 vs EMA{n}", light, value, detail,
                 {"close": closes[-1], "ema": round(e, 1), "dev_pct": round(dev, 2)},
-                gc[-1]["date"], stale)
+                gold[-1]["date"], stale)
 
 
 def _gold_net_long(th, today, cot_gold):

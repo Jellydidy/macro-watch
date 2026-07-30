@@ -177,11 +177,10 @@
   };
 
   var FRED = ["T10YIE", "DFII10", "PCETRIM12M159SFRBDAL", "DGS30", "T10Y2Y", "UNRATE",
-              "BAMLH0A0HYM2", "DCOILWTICO"];
+              "BAMLH0A0HYM2", "DCOILWTICO", "NASDAQCOM"];
   var loads = FRED.map(function (s) { return loadCSV("fred_" + s, "data/fred/" + s + ".csv", numRow(["value"])); });
-  loads.push(loadCSV("gc", "data/market/gc_daily.csv", numRow(["open", "high", "low", "close"])));
+  loads.push(loadCSV("gold", "data/market/gold_usd_daily.csv", numRow(["close"])));
   loads.push(loadCSV("copx", "data/market/copx_daily.csv", numRow(["close"])));
-  loads.push(loadCSV("ixic", "data/market/ixic_daily.csv", numRow(["close"])));
   loads.push(loadCSV("cu", "data/market/cu0_daily.csv", numRow(["open", "high", "low", "close", "volume", "oi"])));
   loads.push(loadCSV("cot_gold", "data/cot/gold_legacy.csv", numRow(["net_long", "open_interest"])));
   loads.push(fetchJSON("data/signals.json").then(function (j) { D.signals = j; }).catch(function () { D.signals = null; }));
@@ -359,7 +358,7 @@
     });
 
     registerChart("ch-ixic", function () {
-      var rows = D.ixic;
+      var rows = seriesOf("fred_NASDAQCOM");
       if (!rows || !rows.length) return null;
       rows = lastN(rows, 504);
       var sig = sigById("nasdaq_high");
@@ -367,7 +366,7 @@
       var ax = axes(rows.map(function (r) { return r.date; }), function (v) { return (v / 1000) + "k"; });
       o.xAxis = ax.xAxis; o.yAxis = ax.yAxis;
       o.legend.show = false;
-      var s = lineSeries("^IXIC", rows.map(function (r) { return r.close; }), cssVar("--s1"));
+      var s = lineSeries("纳指", rows.map(function (r) { return r.value; }), cssVar("--s1"));
       if (sig && sig.inputs && sig.inputs.prior_high) {
         s.markLine = markLines([{ y: sig.inputs.prior_high, label: "一年前高", color: cssVar("--warning") }]);
       }
@@ -399,7 +398,7 @@
     });
 
     registerChart("ch-gold", function () {
-      var rows = D.gc;
+      var rows = D.gold;
       if (!rows || rows.length < 210) return null;
       var closes = rows.map(function (r) { return r.close; });
       var period = (th.gold && th.gold.ema_period) || 200;
@@ -413,7 +412,7 @@
       var ax = axes(vRows.map(function (r) { return r.date; }), null);
       o.xAxis = ax.xAxis; o.yAxis = ax.yAxis;
       o.series = [
-        lineSeries("GC=F 收盘", vRows.map(function (r) { return r.close; }), cssVar("--s1")),
+        lineSeries("LBMA PM", vRows.map(function (r) { return r.close; }), cssVar("--s1")),
         lineSeries("EMA" + period, vRows.map(function (r, idx) {
           var v = emaByIdx[start + idx];
           return v === undefined ? null : +v.toFixed(1);
@@ -653,7 +652,8 @@
         "pp 且 WTI 变动 < ±" + c.wti_move_pct + "% → 非宏观扰动回调(文章买点);HY 利差走扩 ≥ +" + c.hy_widen_pp + "pp → 宏观风险,勿接。"],
       ["COPX 领先趋势", "COPX vs EMA" + c.copx_ema + ":站上且斜率(" + c.copx_slope_days + " 日)向上 → 转强;近 " +
         c.copx_slope_days + " 日相对沪铜收益差 > ±" + c.divergence_pp + "pp 时提示领先/背离。"],
-      ["数据口径与降级", "国际金价=COMEX 主力 GC=F;沪铜=新浪主力连续 CU0;COT=CFTC legacy futures-only;" +
+      ["数据口径与降级", "国际金价=LBMA PM 定盘价(USD);纳指=FRED NASDAQCOM(综合指数);沪铜=新浪主力连续 CU0;" +
+        "COPX=新浪美股日K;COT=CFTC legacy futures-only(Yahoo 对数据中心 IP 拦截,已弃用)。" +
         "SPDR GLD 官方持仓端点当前失效(返回 PDF),采集器保留探测,恢复即自动接管;失效期间 ETF 信号用 WGC 人工月度数据。" +
         "任何数据源过期(阈值见 config)对应信号强制转灰——宁灰勿错。"]
     ];

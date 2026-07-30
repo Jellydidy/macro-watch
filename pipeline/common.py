@@ -23,8 +23,9 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA = os.path.join(ROOT, "data")
 CONFIG = os.path.join(ROOT, "config", "thresholds.json")
 
-UA = ("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 "
-      "(KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36")
+# 诚实 UA:实测 FRED(Akamai)对"假浏览器指纹"(curl/urllib 报 Chrome UA)直接掐流,
+# 对诚实的工具 UA 反而放行。伪装是负收益,别改回浏览器 UA。
+UA = "macro-watch/1.0 (+https://github.com/Jellydidy/macro-watch)"
 
 # 行数护栏:新数据行数低于旧数据的该比例视为响应异常,拒绝覆盖
 GUARD_RATIO = 0.95

@@ -37,9 +37,10 @@ SKIP_SOURCES=fred,yahoo ./scripts/run_local.sh   # 跳过慢源,只调前端
 
 | 数据 | 来源 | 频率 | 策略 |
 |---|---|---|---|
-| T10YIE/DFII10/TrimmedPCE/DGS2/10/30/T10Y2Y/UNRATE/FEDFUNDS/HY利差/WTI | FRED 免key CSV | 日/月 | 全量覆盖(必须单序列逐个请求,合并请求会返回 zip) |
+| T10YIE/DFII10/TrimmedPCE/DGS2/10/30/T10Y2Y/UNRATE/FEDFUNDS/HY利差/WTI/**NASDAQCOM(纳指)** | FRED 免key CSV | 日/月 | 全量覆盖(必须单序列逐个请求,合并请求会返回 zip;**必须诚实 UA**,伪装浏览器 UA 会被 Akamai 掐流) |
 | 沪铜主力 CU0 日K(2005至今,含持仓量)+ 实时快照 | 新浪期货 | 日 | 全量覆盖;实时价只展示不入库 |
-| 国际金价 **GC=F**、COPX、GLD、^IXIC | Yahoo chart API | 日 | 首跑 range=max 回填,之后 range=1y 增量合并、新值覆盖(XAUUSD=X 不可用,金价口径为 COMEX 主力) |
+| 国际金价(**LBMA PM 定盘价**,USD,1968至今) | prices.lbma.org.uk 官方 JSON | 日 | 全量覆盖(Yahoo/stooq 对数据中心 IP 拦截,均不可用;LBMA 权威无风控) |
+| COPX 铜矿 ETF 日K(2010至今) | 新浪美股 | 日 | 全量覆盖 |
 | 黄金/COMEX铜 净多头与 OI | CFTC Socrata(legacy futures-only) | 周 | 增量追加;**口径**:noncommercial 净多头作 managed money 代理 |
 | SPDR GLD 官方持仓吨位 | spdrgoldshares.com | 日 | 端点 2026-07 起返回 PDF(失效),采集器保留探测+三重校验,恢复即自动接管 |
 | 黄金 ETF 月度流量、央行购金、AI Capex | 人工录入(见下) | 月/季 | `data/manual/*.json` |
@@ -68,7 +69,7 @@ schema 有校验,改坏了只会让对应信号变灰,不会炸流水线:
 | 症状 | 处置 |
 |---|---|
 | COT 数据疑似缺段/错乱 | 删除 `data/cot/*.csv`,下次运行自动全量重拉 |
-| Yahoo 持续 429/失败 | `pipeline/yahoo.py` 里把 `query1` 换成 `query2.finance.yahoo.com`(备用域名) |
+| FRED 突然全线失败 | 大概率 UA 策略变化:确认 `common.py` 的 UA 仍是诚实工具 UA(不要伪装浏览器) |
 | 定时任务停摆(长假后) | GitHub 对 60 天无 commit 的仓库暂停 schedule;本仓库交易日天天有 commit 天然免疫;若真停了,Actions 页面手动 Run workflow 一次即恢复 |
 | GLD 自动源恢复了想确认 | status 表看 `auto:gld_holdings` 变绿即已自动接管,ETF 信号自动切回日频吨位 |
 | 信号大面积变灰 | 先看页面"数据新鲜度"表哪个源红了;本地跑 `python3 -m pipeline.check_status` 看摘要 |
