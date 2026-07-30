@@ -37,7 +37,7 @@ def main():
     except Exception:  # noqa: BLE001
         traceback.print_exc()
         status.record("signals", False, error="signal computation crashed, see log")
-    status.save()
+    status.save(prune=not skip)
     print("status.json written")
     return 0
 

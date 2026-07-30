@@ -193,6 +193,7 @@ class Status:
 
     def __init__(self):
         self.doc = {"generated_at": None, "sources": {}, "extra": {}}
+        self.touched = set()
         if os.path.exists(self.PATH):
             try:
                 with open(self.PATH, encoding="utf-8") as f:
@@ -217,6 +218,7 @@ class Status:
             "freq": freq or prev.get("freq"),
         }
         self.doc["sources"][source_id] = entry
+        self.touched.add(source_id)
         flag = "OK " if ok else "FAIL"
         print(f"[{flag}] {source_id}: rows={entry['rows']} latest={entry['latest_date']}"
               + ("" if ok else f" error={entry['error']}"))
@@ -224,6 +226,11 @@ class Status:
     def set_extra(self, key, value):
         self.doc["extra"][key] = value
 
-    def save(self):
+    def save(self, prune=False):
+        """prune=True(完整运行)时清除本轮未触达的源——已删除模块的孤儿记录
+        会永远 FAIL 卡红 check_status。跳过源的运行(SKIP_SOURCES)不 prune。"""
+        if prune:
+            self.doc["sources"] = {k: v for k, v in self.doc["sources"].items()
+                                   if k in self.touched}
         self.doc["generated_at"] = now_utc()
         atomic_write(self.PATH, json.dumps(self.doc, ensure_ascii=False, indent=1))
