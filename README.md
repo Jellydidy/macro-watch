@@ -74,6 +74,7 @@ schema 有校验,改坏了只会让对应信号变灰,不会炸流水线:
 | GLD 自动源恢复了想确认 | status 表看 `auto:gld_holdings` 变绿即已自动接管,ETF 信号自动切回日频吨位 |
 | 信号大面积变灰 | 先看页面"数据新鲜度"表哪个源红了;本地跑 `python3 -m pipeline.check_status` 看摘要 |
 | 想调整阈值(如沪铜区间上移) | 只改 `config/thresholds.json`,下次运行生效,前端方法论区同步显示新值 |
+| 本地 push 时 data/ 冲突 | 云端每日自动 commit 数据;本地跑完**不必提交 data/**(以云端为准),冲突时 `git checkout --ours data/` 取云端版本即可 |
 
 ## 目录结构
 
