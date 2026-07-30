@@ -1,9 +1,11 @@
 {
- "generated_at": "2026-07-30T03:17:33Z",
+ "generated_at": "2026-07-30T03:23:40Z",
  "scenario": {
   "lean": 0,
-  "label": "数据不足",
+  "label": "情景不明朗",
   "conditions": [
+   "WTI 63日 -14%(触发≥+20%),3年分位 83(触发≥90)",
+   "10Y 利率 63日 +0.26pp",
    "纳指近期破前高=否;Capex放缓确认=否"
   ],
   "as_of": "2026-07-30"
@@ -13,56 +15,76 @@
    "id": "fed_zone",
    "group": "fed",
    "name": "联储反应区间",
-   "light": "gray",
-   "value": "数据缺失",
-   "detail": "缺少 T10YIE / TrimmedPCE / UNRATE",
-   "inputs": {},
-   "as_of": null,
-   "stale": true
+   "light": "yellow",
+   "value": "按兵不动区",
+   "detail": "T10YIE=2.26(2026-07-29),TrimmedPCE=2.41(2026-05-01),Sahm gap=0.07(2026-06-01)。距离鹰派警戒与降息条件均有距离",
+   "inputs": {
+    "t10yie": 2.26,
+    "trimmed_pce": 2.41,
+    "sahm_gap": 0.067
+   },
+   "as_of": "2026-07-29",
+   "stale": false
   },
   {
    "id": "sahm_gap",
    "group": "fed",
    "name": "Sahm 规则(失业率)",
-   "light": "gray",
-   "value": "数据缺失",
-   "detail": "UNRATE 数据不足",
-   "inputs": {},
-   "as_of": null,
-   "stale": true
+   "light": "green",
+   "value": "就业稳定",
+   "detail": "失业率 4.2%(2026-06-01),Sahm gap=0.07(3月均值−12个月内最低3月均值;≥0.5 即文章所说'失业率明显走高')",
+   "inputs": {
+    "unrate": 4.2,
+    "sahm_gap": 0.067
+   },
+   "as_of": "2026-06-01",
+   "stale": false
   },
   {
    "id": "gold_double_kill",
    "group": "fed",
    "name": "黄金双杀组合",
-   "light": "gray",
-   "value": "数据缺失",
-   "detail": "T10YIE/DFII10 数据不足",
-   "inputs": {},
-   "as_of": null,
-   "stale": true
+   "light": "yellow",
+   "value": "半条件",
+   "detail": "近20交易日:通胀预期 +0.02pp(触发≤-0.1),实际利率 +0.25pp(触发≥+0.1)。文章:'通胀预期回落+实际利率走高'是黄金最不利组合,一票否决",
+   "inputs": {
+    "t10yie_d20": 0.02,
+    "dfii10_d20": 0.25
+   },
+   "as_of": "2026-07-29",
+   "stale": false
   },
   {
    "id": "curve_steepening",
    "group": "fed",
-   "name": "曲线陡峭化",
-   "light": "gray",
-   "value": "数据缺失",
-   "detail": "T10Y2Y/DGS30 数据不足",
-   "inputs": {},
-   "as_of": null,
-   "stale": true
+   "name": "曲线陡峭化(市场自行收紧)",
+   "light": "red",
+   "value": "市场在自行收紧",
+   "detail": "10Y-2Y 近20日 +0.15pp(触发≥+0.15);30Y=5.09 vs 前252日高点 5.18(未破)",
+   "inputs": {
+    "t10y2y_d20": 0.15,
+    "dgs30": 5.09,
+    "dgs30_prior_high": 5.18,
+    "dgs30_broke": false
+   },
+   "as_of": "2026-07-29",
+   "stale": false
   },
   {
    "id": "nasdaq_high",
    "group": "ai",
    "name": "纳指 vs 前高(追铜信号)",
-   "light": "gray",
-   "value": "数据缺失",
-   "detail": "^IXIC 数据不足",
-   "inputs": {},
-   "as_of": null,
-   "stale": true
+   "light": "neutral",
+   "value": "未破前高",
+   "detail": "纳指 24,877,距前252日高点 27,094 为 -8.2%。文章:纳指破前高=追铜信号。",
+   "inputs": {
+    "close": 24876.91,
+    "prior_high": 27093.9,
+    "gap_pct": -8.18,
+    "broke_recent": false
+   },
+   "as_of": "2026-07-28",
+   "stale": false
   },
   {
    "id": "ai_capex",
@@ -81,12 +103,16 @@
    "id": "gold_ema",
    "group": "gold",
    "name": "金价 vs EMA200",
-   "light": "gray",
-   "value": "数据缺失",
-   "detail": "GC=F 数据不足",
-   "inputs": {},
-   "as_of": null,
-   "stale": true
+   "light": "red",
+   "value": "趋势线下方",
+   "detail": "国际金价(LBMA PM)4,000.8 vs EMA200 4,283.9,偏离 -6.6%。文章:黄金趋势性极强,均线上下区别巨大",
+   "inputs": {
+    "close": 4000.85,
+    "ema": 4283.9,
+    "dev_pct": -6.61
+   },
+   "as_of": "2026-07-29",
+   "stale": false
   },
   {
    "id": "gold_net_long",
@@ -153,11 +179,11 @@
    "group": "gold",
    "name": "黄金总灯",
    "light": "yellow",
-   "value": "看多条件 3/4",
-   "detail": "计数展示(非黑箱打分):EMA/净多头/OI/ETF/央行购金 五项中绿灯数;双杀组合触发时强制红灯。子信号状态:{'gold_ema': 'gray', 'gold_net_long': 'green', 'gold_oi': 'green', 'gold_etf': 'red', 'cb_gold': 'green'}",
+   "value": "看多条件 3/5",
+   "detail": "计数展示(非黑箱打分):EMA/净多头/OI/ETF/央行购金 五项中绿灯数;双杀组合触发时强制红灯。子信号状态:{'gold_ema': 'red', 'gold_net_long': 'green', 'gold_oi': 'green', 'gold_etf': 'red', 'cb_gold': 'green'}",
    "inputs": {
     "bullish": 3,
-    "usable": 4,
+    "usable": 5,
     "forced_red": false
    },
    "as_of": "2026Q1",
@@ -196,12 +222,17 @@
    "id": "copx_trend",
    "group": "copper",
    "name": "COPX 领先趋势",
-   "light": "gray",
-   "value": "数据缺失",
-   "detail": "COPX 数据不足",
-   "inputs": {},
-   "as_of": null,
-   "stale": true
+   "light": "red",
+   "value": "趋势线下方",
+   "detail": "COPX 76.14 vs EMA50 79.28(下方),EMA 斜率向下",
+   "inputs": {
+    "close": 76.14,
+    "ema": 79.28,
+    "above": false,
+    "slope_up": false
+   },
+   "as_of": "2026-07-29",
+   "stale": false
   }
  ]
 }
