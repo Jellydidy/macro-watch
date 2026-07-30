@@ -1,0 +1,30 @@
+name: diag
+on: workflow_dispatch
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Probe endpoints from runner
+        run: |
+          probe() {
+            printf '=== %s\n' "$1"
+            shift
+            code=$(curl -s -o /tmp/body -w "%{http_code}" --max-time 20 "$@" || echo "ERR$?")
+            size=$(wc -c < /tmp/body | tr -d ' ')
+            printf 'status=%s bytes=%s head=%.120s\n' "$code" "$size" "$(head -c 200 /tmp/body | tr '\n' ' ')"
+          }
+          UA="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36"
+          probe "FRED h2 default"        -A "$UA" "https://fred.stlouisfed.org/graph/fredgraph.csv?id=T10YIE"
+          probe "FRED http1.1"           --http1.1 -A "$UA" "https://fred.stlouisfed.org/graph/fredgraph.csv?id=T10YIE"
+          probe "FRED no-UA"             "https://fred.stlouisfed.org/graph/fredgraph.csv?id=T10YIE"
+          probe "FRED curl-UA"           -A "curl/8.5.0" "https://fred.stlouisfed.org/graph/fredgraph.csv?id=T10YIE"
+          probe "FRED browser-full"      --http1.1 -A "$UA" -H "Accept: text/csv,*/*" -H "Accept-Language: en-US,en;q=0.9" -H "Referer: https://fred.stlouisfed.org/series/T10YIE" "https://fred.stlouisfed.org/graph/fredgraph.csv?id=T10YIE"
+          probe "Yahoo q1 GC=F"          -A "$UA" "https://query1.finance.yahoo.com/v8/finance/chart/GC%3DF?range=5d&interval=1d"
+          probe "Yahoo q2 GC=F"          -A "$UA" "https://query2.finance.yahoo.com/v8/finance/chart/GC%3DF?range=5d&interval=1d"
+          probe "stooq xauusd"           -A "$UA" "https://stooq.com/q/d/l/?s=xauusd&i=d"
+          probe "stooq copx.us"          -A "$UA" "https://stooq.com/q/d/l/?s=copx.us&i=d"
+          probe "stooq gld.us"           -A "$UA" "https://stooq.com/q/d/l/?s=gld.us&i=d"
+          probe "stooq ^ndq"             -A "$UA" "https://stooq.com/q/d/l/?s=%5Endq&i=d"
+          probe "stooq ^ixic"            -A "$UA" "https://stooq.com/q/d/l/?s=%5Eixic&i=d"
+          probe "stooq gc.f"             -A "$UA" "https://stooq.com/q/d/l/?s=gc.f&i=d"
