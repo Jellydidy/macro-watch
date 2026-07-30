@@ -1,0 +1,13 @@
+{
+  "_instructions": "每季度更新(WGC《Gold Demand Trends》季报发布后,约 1/4/7/10 月末):打开 https://www.gold.org/goldhub/research/gold-demand-trends,抄 Central banks 当季净购金(吨)→ net_purchases_t,在 series 末尾追加一行。",
+  "unit": "tonnes",
+  "source": "World Gold Council, Gold Demand Trends quarterly",
+  "_note": "2025Q1/Q2 为由全年 863.3t 减去 Q3(220)Q4(230)的推算拆分(Q2≈172 来自 WGC 表述'Q3 较 Q2 高 28%'),建议对照 WGC 原文校准;2026Q1=244 为 WGC 官方数。",
+  "series": [
+    {"quarter": "2025Q1", "net_purchases_t": 241.0},
+    {"quarter": "2025Q2", "net_purchases_t": 172.0},
+    {"quarter": "2025Q3", "net_purchases_t": 220.0},
+    {"quarter": "2025Q4", "net_purchases_t": 230.0},
+    {"quarter": "2026Q1", "net_purchases_t": 244.0}
+  ]
+}

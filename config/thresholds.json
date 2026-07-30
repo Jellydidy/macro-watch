@@ -1,0 +1,68 @@
+{
+  "_comment": "文章框架的全部阈值集中于此。改这里即可调整信号定义,pipeline/signals.py 与前端方法论区都读取本文件。",
+  "fed": {
+    "t10yie_hawk": 2.50,
+    "t10yie_warn": 2.40,
+    "pce_dove": 2.00,
+    "pce_near": 2.20,
+    "sahm_trigger": 0.50,
+    "sahm_near": 0.30
+  },
+  "double_kill": {
+    "window_days": 20,
+    "t10yie_drop_pp": -0.10,
+    "dfii10_rise_pp": 0.10
+  },
+  "curve": {
+    "window_days": 20,
+    "steepen_pp": 0.15,
+    "high_lookback_days": 252
+  },
+  "nasdaq": {
+    "high_lookback_days": 252,
+    "recent_days": 20,
+    "near_pct": 3
+  },
+  "scenario": {
+    "wti_surge_pct": 20,
+    "wti_window_days": 63,
+    "wti_pctile_years": 3,
+    "wti_pctile": 90,
+    "rate_window_days": 63
+  },
+  "gold": {
+    "ema_period": 200,
+    "netlong_window_weeks": 260,
+    "netlong_mid_lo": 30,
+    "netlong_mid_hi": 60,
+    "netlong_crowded": 80,
+    "netlong_washed": 20,
+    "netlong_delta_weeks": 4,
+    "oi_low_weeks": 52,
+    "oi_rebound_pct": 3,
+    "oi_delta_weeks": 4,
+    "etf_auto_max_age_days": 45
+  },
+  "copper": {
+    "support": 95000,
+    "support_buffer": 96000,
+    "pressure": 105000,
+    "range_top": 110000,
+    "breakout_closes": 3,
+    "breakdown_closes": 5,
+    "dip_window_days": 20,
+    "dip_pct": -3,
+    "hy_widen_pp": 0.30,
+    "wti_move_pct": 15,
+    "copx_ema": 50,
+    "copx_slope_days": 20,
+    "divergence_pp": 5
+  },
+  "freshness_days": {
+    "daily": {"yellow": 4, "red": 7},
+    "weekly": {"yellow": 10, "red": 16},
+    "monthly_fred": {"yellow": 75, "red": 100},
+    "monthly_manual": {"yellow": 45, "red": 60},
+    "quarterly": {"yellow": 110, "red": 150}
+  }
+}

@@ -1,0 +1,130 @@
+{
+ "generated_at": "2026-07-30T03:03:05Z",
+ "sources": {
+  "sina:CU0_daily": {
+   "ok": true,
+   "last_attempt": "2026-07-30T03:00:03Z",
+   "last_success": "2026-07-30T03:00:03Z",
+   "error": null,
+   "rows": 5246,
+   "latest_date": "2026-07-29",
+   "freq": "daily"
+  },
+  "sina:CU0_realtime": {
+   "ok": true,
+   "last_attempt": "2026-07-30T03:00:03Z",
+   "last_success": "2026-07-30T03:00:03Z",
+   "error": null,
+   "rows": 1,
+   "latest_date": "2026-07-30",
+   "freq": "daily"
+  },
+  "yahoo:GC=F": {
+   "ok": false,
+   "last_attempt": "2026-07-30T03:00:21Z",
+   "last_success": null,
+   "error": "Command '['curl', '-sS', '--fail', '--compressed', '--retry', '3', '--retry-delay', '2', '--retry-all-errors', '--max-time', '90', '-w', '\\\\n%{http_code}\\\\n%{content_type}', '--output', '-', '-H', 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36', '-H', 'Accept: application/json', 'https://query1.finance.yahoo.com/v8/finance/chart/GC%3DF?range=max&interval=1d']' returned non-zero exit status 56.",
+   "rows": 0,
+   "latest_date": null,
+   "freq": "daily"
+  },
+  "yahoo:COPX": {
+   "ok": false,
+   "last_attempt": "2026-07-30T03:00:45Z",
+   "last_success": null,
+   "error": "Command '['curl', '-sS', '--fail', '--compressed', '--retry', '3', '--retry-delay', '2', '--retry-all-errors', '--max-time', '90', '-w', '\\\\n%{http_code}\\\\n%{content_type}', '--output', '-', '-H', 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36', '-H', 'Accept: application/json', 'https://query1.finance.yahoo.com/v8/finance/chart/COPX?range=max&interval=1d']' returned non-zero exit status 56.",
+   "rows": 0,
+   "latest_date": null,
+   "freq": "daily"
+  },
+  "yahoo:GLD": {
+   "ok": false,
+   "last_attempt": "2026-07-30T03:01:05Z",
+   "last_success": null,
+   "error": "Command '['curl', '-sS', '--fail', '--compressed', '--retry', '3', '--retry-delay', '2', '--retry-all-errors', '--max-time', '90', '-w', '\\\\n%{http_code}\\\\n%{content_type}', '--output', '-', '-H', 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36', '-H', 'Accept: application/json', 'https://query1.finance.yahoo.com/v8/finance/chart/GLD?range=max&interval=1d']' returned non-zero exit status 56.",
+   "rows": 0,
+   "latest_date": null,
+   "freq": "daily"
+  },
+  "yahoo:^IXIC": {
+   "ok": false,
+   "last_attempt": "2026-07-30T03:01:25Z",
+   "last_success": null,
+   "error": "Command '['curl', '-sS', '--fail', '--compressed', '--retry', '3', '--retry-delay', '2', '--retry-all-errors', '--max-time', '90', '-w', '\\\\n%{http_code}\\\\n%{content_type}', '--output', '-', '-H', 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36', '-H', 'Accept: application/json', 'https://query1.finance.yahoo.com/v8/finance/chart/%5EIXIC?range=max&interval=1d']' returned non-zero exit status 56.",
+   "rows": 0,
+   "latest_date": null,
+   "freq": "daily"
+  },
+  "cot:gold": {
+   "ok": true,
+   "last_attempt": "2026-07-30T03:02:45Z",
+   "last_success": "2026-07-30T03:02:45Z",
+   "error": null,
+   "rows": 1635,
+   "latest_date": "2026-07-21",
+   "freq": "weekly"
+  },
+  "cot:copper": {
+   "ok": true,
+   "last_attempt": "2026-07-30T03:03:02Z",
+   "last_success": "2026-07-30T03:03:02Z",
+   "error": null,
+   "rows": 1635,
+   "latest_date": "2026-07-21",
+   "freq": "weekly"
+  },
+  "auto:gld_holdings": {
+   "ok": false,
+   "last_attempt": "2026-07-30T03:03:05Z",
+   "last_success": null,
+   "error": "content-type 'application/pdf', expected csv",
+   "rows": 0,
+   "latest_date": null,
+   "freq": "daily"
+  },
+  "manual:gold_etf_flows": {
+   "ok": true,
+   "last_attempt": "2026-07-30T03:03:05Z",
+   "last_success": "2026-07-30T03:03:05Z",
+   "error": null,
+   "rows": 2,
+   "latest_date": "2026-06",
+   "freq": "monthly_manual"
+  },
+  "manual:central_bank_gold": {
+   "ok": true,
+   "last_attempt": "2026-07-30T03:03:05Z",
+   "last_success": "2026-07-30T03:03:05Z",
+   "error": null,
+   "rows": 5,
+   "latest_date": "2026Q1",
+   "freq": "quarterly"
+  },
+  "manual:ai_capex": {
+   "ok": true,
+   "last_attempt": "2026-07-30T03:03:05Z",
+   "last_success": "2026-07-30T03:03:05Z",
+   "error": null,
+   "rows": 1,
+   "latest_date": "2026Q1",
+   "freq": "quarterly"
+  },
+  "signals": {
+   "ok": true,
+   "last_attempt": "2026-07-30T03:03:05Z",
+   "last_success": "2026-07-30T03:03:05Z",
+   "error": null,
+   "rows": 15,
+   "latest_date": "2026-07-30",
+   "freq": "daily"
+  }
+ },
+ "extra": {
+  "cu0_realtime": {
+   "price": 104920.0,
+   "date": "2026-07-30",
+   "time": "105947",
+   "fetched_at": "2026-07-30T03:00:03Z"
+  }
+ }
+}

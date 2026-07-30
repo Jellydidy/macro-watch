@@ -1,0 +1,9 @@
+{
+  "_instructions": "每月 10 日前更新:打开 https://www.gold.org/goldhub/research/etf-flows(WGC 每月初发布上月报告),抄两个数:全球总持仓(吨)→ global_holdings_t,当月净流量(吨)→ monthly_flow_t(流出为负)。在 series 末尾追加一行即可,GitHub 网页编辑器可直接改。",
+  "unit": "tonnes",
+  "source": "World Gold Council goldhub, Gold ETF flows monthly",
+  "series": [
+    {"month": "2026-05", "global_holdings_t": 4121.0, "monthly_flow_t": -16.0},
+    {"month": "2026-06", "global_holdings_t": 4047.0, "monthly_flow_t": -74.3}
+  ]
+}

@@ -1,0 +1,207 @@
+{
+ "generated_at": "2026-07-30T03:03:05Z",
+ "scenario": {
+  "lean": 0,
+  "label": "数据不足",
+  "conditions": [
+   "纳指近期破前高=否;Capex放缓确认=否"
+  ],
+  "as_of": "2026-07-30"
+ },
+ "signals": [
+  {
+   "id": "fed_zone",
+   "group": "fed",
+   "name": "联储反应区间",
+   "light": "gray",
+   "value": "数据缺失",
+   "detail": "缺少 T10YIE / TrimmedPCE / UNRATE",
+   "inputs": {},
+   "as_of": null,
+   "stale": true
+  },
+  {
+   "id": "sahm_gap",
+   "group": "fed",
+   "name": "Sahm 规则(失业率)",
+   "light": "gray",
+   "value": "数据缺失",
+   "detail": "UNRATE 数据不足",
+   "inputs": {},
+   "as_of": null,
+   "stale": true
+  },
+  {
+   "id": "gold_double_kill",
+   "group": "fed",
+   "name": "黄金双杀组合",
+   "light": "gray",
+   "value": "数据缺失",
+   "detail": "T10YIE/DFII10 数据不足",
+   "inputs": {},
+   "as_of": null,
+   "stale": true
+  },
+  {
+   "id": "curve_steepening",
+   "group": "fed",
+   "name": "曲线陡峭化",
+   "light": "gray",
+   "value": "数据缺失",
+   "detail": "T10Y2Y/DGS30 数据不足",
+   "inputs": {},
+   "as_of": null,
+   "stale": true
+  },
+  {
+   "id": "nasdaq_high",
+   "group": "ai",
+   "name": "纳指 vs 前高(追铜信号)",
+   "light": "gray",
+   "value": "数据缺失",
+   "detail": "^IXIC 数据不足",
+   "inputs": {},
+   "as_of": null,
+   "stale": true
+  },
+  {
+   "id": "ai_capex",
+   "group": "ai",
+   "name": "AI Capex 增速",
+   "light": "gray",
+   "value": "样本不足",
+   "detail": "可计算 YoY 的季度只有 0 个(需四家数据齐的季度,且上年同季也齐)。最新数据 2026Q1",
+   "inputs": {
+    "yoy": {}
+   },
+   "as_of": "2026Q1",
+   "stale": false
+  },
+  {
+   "id": "gold_ema",
+   "group": "gold",
+   "name": "金价 vs EMA200",
+   "light": "gray",
+   "value": "数据缺失",
+   "detail": "GC=F 数据不足",
+   "inputs": {},
+   "as_of": null,
+   "stale": true
+  },
+  {
+   "id": "gold_net_long",
+   "group": "gold",
+   "name": "CFTC 净多头分位",
+   "light": "green",
+   "value": "中位回暖(文章看多条件)",
+   "detail": "非商业净多头 176,195(口径:legacy noncommercial,作管理基金代理),5年分位 36%,近4周 +3,311",
+   "inputs": {
+    "net_long": 176195,
+    "pctile_5y": 35.8,
+    "delta_4w": 3311
+   },
+   "as_of": "2026-07-21",
+   "stale": false
+  },
+  {
+   "id": "gold_oi",
+   "group": "gold",
+   "name": "COMEX 持仓量(OI)",
+   "light": "green",
+   "value": "见底反弹",
+   "detail": "OI=523,471,52周低点 434,790,反弹 +20.4%(触发≥+3% 且近4周走高)",
+   "inputs": {
+    "oi": 523471,
+    "low_52w": 434790,
+    "rebound_pct": 20.4,
+    "delta_4w": 26025
+   },
+   "as_of": "2026-07-21",
+   "stale": false
+  },
+  {
+   "id": "gold_etf",
+   "group": "gold",
+   "name": "黄金 ETF 流向",
+   "light": "red",
+   "value": "连续流出",
+   "detail": "全球黄金 ETF 2026-06 净流量 -74.3t(人工月度录入,来源 WGC goldhub)",
+   "inputs": {
+    "monthly_flow_t": -74.3,
+    "month": "2026-06",
+    "source": "manual"
+   },
+   "as_of": "2026-06",
+   "stale": false
+  },
+  {
+   "id": "cb_gold",
+   "group": "gold",
+   "name": "央行购金",
+   "light": "green",
+   "value": "购金力度维持",
+   "detail": "2026Q1 央行净购金 244t,vs 前4季均值 216t(人工季度录入,来源 WGC)",
+   "inputs": {
+    "quarter": "2026Q1",
+    "net_purchases_t": 244.0
+   },
+   "as_of": "2026Q1",
+   "stale": false
+  },
+  {
+   "id": "gold_composite",
+   "group": "gold",
+   "name": "黄金总灯",
+   "light": "yellow",
+   "value": "看多条件 3/4",
+   "detail": "计数展示(非黑箱打分):EMA/净多头/OI/ETF/央行购金 五项中绿灯数;双杀组合触发时强制红灯。子信号状态:{'gold_ema': 'gray', 'gold_net_long': 'green', 'gold_oi': 'green', 'gold_etf': 'red', 'cb_gold': 'green'}",
+   "inputs": {
+    "bullish": 3,
+    "usable": 4,
+    "forced_red": false
+   },
+   "as_of": "2026Q1",
+   "stale": false
+  },
+  {
+   "id": "cu_range",
+   "group": "copper",
+   "name": "沪铜区间位置",
+   "light": "yellow",
+   "value": "区间中部",
+   "detail": "CU0 收盘 104,890,区间 95,000–110,000 内位置 66%。文章:95,000 下游愿意点价=支撑,105,000–110,000 有压力",
+   "inputs": {
+    "close": 104890.0,
+    "range_pos_pct": 65.9,
+    "consec_below_support": 0,
+    "consec_above_top": 0
+   },
+   "as_of": "2026-07-29",
+   "stale": false
+  },
+  {
+   "id": "cu_dip_type",
+   "group": "copper",
+   "name": "回调性质判定",
+   "light": "neutral",
+   "value": "未触发",
+   "detail": "近20日 +2.9%,无≥3% 级别回调,判定不激活(仅在显著回调时区分'宏观风险'与'非宏观扰动')",
+   "inputs": {
+    "chg_20d_pct": 2.9
+   },
+   "as_of": "2026-07-29",
+   "stale": false
+  },
+  {
+   "id": "copx_trend",
+   "group": "copper",
+   "name": "COPX 领先趋势",
+   "light": "gray",
+   "value": "数据缺失",
+   "detail": "COPX 数据不足",
+   "inputs": {},
+   "as_of": null,
+   "stale": true
+  }
+ ]
+}

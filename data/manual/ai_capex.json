@@ -1,0 +1,9 @@
+{
+  "_instructions": "每季度财报季后更新(约 2/5/8/11 月初四家发完):抄各公司季报现金流量表的资本开支(purchases of property and equipment),单位十亿美元,按日历季度记账(注意 MSFT 财年错位:其 FY Q3 = 日历 Q1)。某家暂未发布可先填 null。YoY 只在'本季与上年同季四家都齐'时计算,因此回填 2025 年各季度后信号才会点亮——见 README 的回填清单。",
+  "unit": "USD_bn",
+  "source": "各公司 10-Q / 财报新闻稿",
+  "_note": "2026Q1(日历季)三家为财报实际数:MSFT 30.88(FY26Q3)/ GOOG 35.67 / AMZN 44.2;META 单季未披露(FY指引125-145)。2025 年各季度待回填。",
+  "series": [
+    {"quarter": "2026Q1", "MSFT": 30.88, "GOOG": 35.67, "META": null, "AMZN": 44.2}
+  ]
+}

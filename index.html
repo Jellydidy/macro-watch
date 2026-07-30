@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>macro-watch · 金铜宏观观测</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>🧭</text></svg>">
+<link rel="stylesheet" href="assets/style.css">
+<script>
+// 主题初始化要在首帧前完成,避免闪烁
+(function () {
+  var t = localStorage.getItem("mw-theme");
+  if (t === "dark" || t === "light") document.documentElement.dataset.theme = t;
+})();
+</script>
+</head>
+<body>
+
+<header class="topbar">
+  <h1>🧭 macro-watch</h1>
+  <nav class="anchors">
+    <a href="#sec-signals">信号总览</a>
+    <a href="#sec-fed">联储反应函数</a>
+    <a href="#sec-ai">AI 主线</a>
+    <a href="#sec-gold">黄金</a>
+    <a href="#sec-copper">沪铜</a>
+    <a href="#sec-status">数据与方法论</a>
+  </nav>
+  <div class="spacer"></div>
+  <button id="themeToggle" type="button">深/浅色</button>
+</header>
+
+<main>
+
+<section id="sec-signals">
+  <h2>信号总览</h2>
+  <p class="caption">框架源自《鸽派的Warsh,鹰派的市场》:联储反应函数 × AI Capex 主线 × 地缘三情景,落到黄金与沪铜。灯色含义:🟢 有利/触发看多条件 · 🟡 中间态/注意 · 🔴 不利/风险 · ⚪ 未触发无方向 · ◌ 数据缺失或过期(宁灰勿错)。生成时间见页脚。</p>
+  <div class="headline" id="headline"></div>
+  <div class="signal-grid" id="signalGrid"></div>
+</section>
+
+<section id="sec-fed">
+  <h2>联储反应函数</h2>
+  <p class="caption">通胀预期 &lt;2.5% 不鹰派;Trimmed PCE 到 2.0% 或失业率明显走高(Sahm 规则)才降息;中间=按兵不动区。"通胀预期回落+实际利率走高"=黄金双杀。</p>
+  <div id="fedDetails"></div>
+  <div class="cards">
+    <div class="card"><h3>10Y 盈亏平衡通胀预期</h3><p class="sub">T10YIE,阈值 2.5 警戒 / 2.4 接近 / 2.2 现状参考</p><div class="chart" id="ch-t10yie"></div></div>
+    <div class="card"><h3>通胀预期 vs 实际利率(双杀视图)</h3><p class="sub">同为百分比;双杀=蓝线回落且橙线走高</p><div class="chart" id="ch-doublekill"></div></div>
+    <div class="card"><h3>Trimmed Mean PCE(12个月)</h3><p class="sub">达拉斯联储;降息条件 ≤2.0</p><div class="chart" id="ch-pce"></div></div>
+    <div class="card"><h3>失业率</h3><p class="sub">UNRATE;Sahm gap ≥0.5 即"明显走高"</p><div class="chart" id="ch-unrate"></div></div>
+    <div class="card"><h3>期限利差 10Y−2Y</h3><p class="sub">近月陡峭化 ≥+0.15pp = 市场自行收紧</p><div class="chart" id="ch-t10y2y"></div></div>
+    <div class="card"><h3>30Y 利率与一年前高</h3><p class="sub">破前高 = 市场收紧的另一确认</p><div class="chart" id="ch-dgs30"></div></div>
+  </div>
+</section>
+
+<section id="sec-ai">
+  <h2>AI 主线与风险</h2>
+  <p class="caption">AI Capex 决定长端利率与纳指;纳指破前高=追铜信号;HY 利差=宏观风险开关;WTI=地缘代理(情景③触发器)。</p>
+  <div id="aiDetails"></div>
+  <div class="cards">
+    <div class="card"><h3>纳斯达克与一年前高</h3><p class="sub">^IXIC;破前高(近20日内)= 追铜信号有效</p><div class="chart" id="ch-ixic"></div></div>
+    <div class="card"><h3>高收益债利差</h3><p class="sub">BAML HY OAS;快速走扩 = 宏观风险驱动</p><div class="chart" id="ch-hy"></div></div>
+    <div class="card"><h3>WTI 油价(地缘代理)</h3><p class="sub">3个月 +20% 或 3年90分位 → 倾向情景③</p><div class="chart" id="ch-wti"></div></div>
+    <div class="card"><h3>四家 AI Capex(季度,人工录入)</h3><p class="sub">MSFT/GOOG/META/AMZN 资本开支,十亿美元</p><div class="chart" id="ch-capex"></div></div>
+  </div>
+</section>
+
+<section id="sec-gold">
+  <h2>黄金</h2>
+  <p class="caption">趋势品种:EMA200 上下区别巨大。看多条件五项计数(EMA/净多头/OI/ETF/央行购金),双杀触发一票否决。</p>
+  <div id="goldDetails"></div>
+  <div class="cards">
+    <div class="card"><h3>国际金价与 EMA200</h3><p class="sub">COMEX 金主力 GC=F,美元/盎司</p><div class="chart tall" id="ch-gold"></div></div>
+    <div class="card"><h3>CFTC 非商业净多头</h3><p class="sub">周频;文章看多条件:5年分位 30–60% 且回暖</p><div class="chart" id="ch-netlong"></div></div>
+    <div class="card"><h3>COMEX 持仓量(OI)</h3><p class="sub">周频(COT);52周低点反弹≥3% = 见底</p><div class="chart" id="ch-goldoi"></div></div>
+    <div class="card"><h3>全球黄金 ETF 月度净流量</h3><p class="sub">吨;WGC,人工月度录入</p><div class="chart" id="ch-etf"></div></div>
+    <div class="card"><h3>央行购金(季度)</h3><p class="sub">吨;WGC,人工季度录入</p><div class="chart" id="ch-cb"></div></div>
+  </div>
+</section>
+
+<section id="sec-copper">
+  <h2>沪铜</h2>
+  <p class="caption">区间品种:95000 支撑(下游点价)/ 105000–110000 压力。非宏观扰动的下跌是买点;COPX 领先铜价;纳指破前高=追铜。</p>
+  <div id="copperDetails"></div>
+  <div class="cards">
+    <div class="card"><h3>沪铜主力日线与区间带</h3><p class="sub">CU0,元/吨;副图为持仓量</p><div class="chart tall" id="ch-cu"></div></div>
+    <div class="card"><h3>COPX 铜矿 ETF 与 EMA50</h3><p class="sub">领先指标:站上且斜率向上 = 转强</p><div class="chart" id="ch-copx"></div></div>
+    <div class="card"><h3>COPX vs 沪铜(近一年,起点=100)</h3><p class="sub">归一化对比;COPX 领先上行时关注铜补涨</p><div class="chart" id="ch-copxcu"></div></div>
+  </div>
+</section>
+
+<section id="sec-status">
+  <h2>数据新鲜度</h2>
+  <p class="caption">可靠性面板:每个数据源的最新数据日期与采集健康度。任何一行发红,对应信号自动转灰(宁灰勿错)。</p>
+  <div class="table-wrap"><table class="status" id="statusTable"></table></div>
+  <h2 style="margin-top:28px">方法论(信号精确定义)</h2>
+  <p class="caption">每个信号的计算规则原样公开,阈值集中在 <code>config/thresholds.json</code>,可随框架演进调整。</p>
+  <div id="methodology"></div>
+</section>
+
+</main>
+
+<footer id="footer"></footer>
+
+<script src="assets/echarts.min.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>

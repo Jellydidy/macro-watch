@@ -1,0 +1,52 @@
+name: collect
+
+on:
+  schedule:
+    # 15:35 北京时间(UTC+8,无夏令时),SHFE 收盘后 —— 主抓沪铜
+    - cron: '35 7 * * 1-5'
+    # 22:30 UTC = 夏令时 18:30 ET / 冬令时 17:30 ET,均在美盘收盘后;
+    # 周五这一班顺带接住 CFTC 15:30 ET 发布的 COT 周报
+    - cron: '30 22 * * 1-5'
+  workflow_dispatch: {}
+
+concurrency:
+  group: collect
+  cancel-in-progress: false   # 排队不打断,避免半途 commit
+
+permissions:
+  contents: write
+
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      # 无第三方依赖,直接运行(见 requirements.txt 说明)
+      - name: Collect data & compute signals
+        run: python -u -m pipeline.run_all
+
+      # 先 commit 数据再做健康检查:成功的源照常上线,失败只体现为红标
+      - name: Commit & push data
+        run: |
+          git add data/
+          if git diff --cached --quiet; then
+            echo "no data changes"
+          else
+            git -c user.name="macro-watch bot" \
+                -c user.email="actions@users.noreply.github.com" \
+                commit -m "data: $(date -u +%F_%H%MZ)"
+            git pull --rebase origin "${GITHUB_REF_NAME}" || true
+            git push || (git pull --rebase origin "${GITHUB_REF_NAME}" && git push)
+          fi
+
+      # 有源失败或数据超龄 → exit 1 → workflow 红 → GitHub 连续失败会发邮件
+      - name: Check source health
+        run: python -m pipeline.check_status
