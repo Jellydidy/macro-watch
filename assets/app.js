@@ -385,6 +385,7 @@
       o.tooltip.axisPointer.type = "shadow";
       var ax = axes(quarters, null);
       ax.xAxis.boundaryGap = true;
+      ax.yAxis.scale = false;   // 柱状图必须从 0 基线生长
       o.xAxis = ax.xAxis; o.yAxis = ax.yAxis;
       var colors = [cssVar("--s1"), cssVar("--s2"), cssVar("--s3"), cssVar("--muted")];
       o.series = ["MSFT", "GOOG", "META", "AMZN"].map(function (k, i) {
@@ -454,6 +455,7 @@
       o.tooltip.axisPointer.type = "shadow";
       var ax = axes(rows.map(function (r) { return r.month; }), null);
       ax.xAxis.boundaryGap = true;
+      ax.yAxis.scale = false;   // 柱状图必须从 0 基线生长
       o.xAxis = ax.xAxis; o.yAxis = ax.yAxis;
       o.legend.show = false;
       o.series = [{
@@ -471,6 +473,7 @@
       o.tooltip.axisPointer.type = "shadow";
       var ax = axes(rows.map(function (r) { return r.quarter; }), null);
       ax.xAxis.boundaryGap = true;
+      ax.yAxis.scale = false;   // 柱状图必须从 0 基线生长
       o.xAxis = ax.xAxis; o.yAxis = ax.yAxis;
       o.legend.show = false;
       o.series = [{

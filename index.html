@@ -9,7 +9,8 @@
 <script>
 // 主题初始化要在首帧前完成,避免闪烁
 (function () {
-  var t = localStorage.getItem("mw-theme");
+  var q = new URLSearchParams(location.search).get("theme");
+  var t = (q === "dark" || q === "light") ? q : localStorage.getItem("mw-theme");
   if (t === "dark" || t === "light") document.documentElement.dataset.theme = t;
 })();
 </script>
