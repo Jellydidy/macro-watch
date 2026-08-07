@@ -1,11 +1,11 @@
 {
- "generated_at": "2026-08-07T08:36:27Z",
+ "generated_at": "2026-08-07T23:07:37Z",
  "scenario": {
   "lean": 0,
   "label": "情景不明朗",
   "conditions": [
    "WTI 63日 -22%(触发≥+20%),3年分位 76(触发≥90)",
-   "10Y 利率 63日 +0.20pp",
+   "10Y 利率 63日 +0.33pp",
    "纳指近期破前高=否;Capex放缓确认=否"
   ],
   "as_of": "2026-08-07"
@@ -17,13 +17,13 @@
    "name": "联储反应区间",
    "light": "yellow",
    "value": "按兵不动区",
-   "detail": "T10YIE=2.26(2026-08-06),TrimmedPCE=2.23(2026-06-01),Sahm gap=0.07(2026-06-01)。距离鹰派警戒与降息条件均有距离",
+   "detail": "T10YIE=2.25(2026-08-07),TrimmedPCE=2.23(2026-06-01),Sahm gap=0.00(2026-07-01)。距离鹰派警戒与降息条件均有距离",
    "inputs": {
-    "t10yie": 2.26,
+    "t10yie": 2.25,
     "trimmed_pce": 2.23,
-    "sahm_gap": 0.067
+    "sahm_gap": 0.0
    },
-   "as_of": "2026-08-06",
+   "as_of": "2026-08-07",
    "stale": false
   },
   {
@@ -32,12 +32,12 @@
    "name": "Sahm 规则(失业率)",
    "light": "green",
    "value": "就业稳定",
-   "detail": "失业率 4.2%(2026-06-01),Sahm gap=0.07(3月均值−12个月内最低3月均值;≥0.5 即文章所说'失业率明显走高')",
+   "detail": "失业率 4.1%(2026-07-01),Sahm gap=0.00(3月均值−12个月内最低3月均值;≥0.5 即文章所说'失业率明显走高')",
    "inputs": {
-    "unrate": 4.2,
-    "sahm_gap": 0.067
+    "unrate": 4.1,
+    "sahm_gap": 0.0
    },
-   "as_of": "2026-06-01",
+   "as_of": "2026-07-01",
    "stale": false
   },
   {
@@ -46,12 +46,12 @@
    "name": "黄金双杀组合",
    "light": "yellow",
    "value": "半条件",
-   "detail": "近20交易日:通胀预期 +0.03pp(触发≤-0.1),实际利率 +0.10pp(触发≥+0.1)。文章:'通胀预期回落+实际利率走高'是黄金最不利组合,一票否决",
+   "detail": "近20交易日:通胀预期 +0.01pp(触发≤-0.1),实际利率 +0.12pp(触发≥+0.1)。文章:'通胀预期回落+实际利率走高'是黄金最不利组合,一票否决",
    "inputs": {
-    "t10yie_d20": 0.03,
-    "dfii10_d20": 0.1
+    "t10yie_d20": 0.01,
+    "dfii10_d20": 0.12
    },
-   "as_of": "2026-08-06",
+   "as_of": "2026-08-07",
    "stale": false
   },
   {
@@ -60,14 +60,14 @@
    "name": "曲线陡峭化(市场自行收紧)",
    "light": "green",
    "value": "曲线平稳",
-   "detail": "10Y-2Y 近20日 +0.06pp(触发≥+0.15);30Y=5.17 vs 前252日高点 5.27(未破)",
+   "detail": "10Y-2Y 近20日 +0.11pp(触发≥+0.15);30Y=5.22 vs 前252日高点 5.27(未破)",
    "inputs": {
-    "t10y2y_d20": 0.06,
-    "dgs30": 5.17,
+    "t10y2y_d20": 0.11,
+    "dgs30": 5.22,
     "dgs30_prior_high": 5.27,
     "dgs30_broke": false
    },
-   "as_of": "2026-08-06",
+   "as_of": "2026-08-07",
    "stale": false
   },
   {
@@ -118,15 +118,15 @@
    "id": "gold_net_long",
    "group": "gold",
    "name": "CFTC 净多头分位",
-   "light": "neutral",
-   "value": "中性",
-   "detail": "非商业净多头 174,131(口径:legacy noncommercial,作管理基金代理),5年分位 34%,近4周 -8,079",
+   "light": "green",
+   "value": "中位回暖(文章看多条件)",
+   "detail": "非商业净多头 190,648(口径:legacy noncommercial,作管理基金代理),5年分位 46%,近4周 +7,483",
    "inputs": {
-    "net_long": 174131,
-    "pctile_5y": 33.8,
-    "delta_4w": -8079
+    "net_long": 190648,
+    "pctile_5y": 46.2,
+    "delta_4w": 7483
    },
-   "as_of": "2026-07-28",
+   "as_of": "2026-08-04",
    "stale": false
   },
   {
@@ -135,14 +135,14 @@
    "name": "COMEX 持仓量(OI)",
    "light": "neutral",
    "value": "中性",
-   "detail": "OI=493,548,52周低点 434,790,反弹 +13.5%(触发≥+3% 且近4周走高)",
+   "detail": "OI=488,312,52周低点 434,790,反弹 +12.3%(触发≥+3% 且近4周走高)",
    "inputs": {
-    "oi": 493548,
+    "oi": 488312,
     "low_52w": 434790,
-    "rebound_pct": 13.5,
-    "delta_4w": -6593
+    "rebound_pct": 12.3,
+    "delta_4w": -18170
    },
-   "as_of": "2026-07-28",
+   "as_of": "2026-08-04",
    "stale": false
   },
   {
@@ -178,11 +178,11 @@
    "id": "gold_composite",
    "group": "gold",
    "name": "黄金总灯",
-   "light": "red",
-   "value": "看多条件 1/5",
-   "detail": "计数展示(非黑箱打分):EMA/净多头/OI/ETF/央行购金 五项中绿灯数;双杀组合触发时强制红灯。子信号状态:{'gold_ema': 'red', 'gold_net_long': 'neutral', 'gold_oi': 'neutral', 'gold_etf': 'red', 'cb_gold': 'green'}",
+   "light": "yellow",
+   "value": "看多条件 2/5",
+   "detail": "计数展示(非黑箱打分):EMA/净多头/OI/ETF/央行购金 五项中绿灯数;双杀组合触发时强制红灯。子信号状态:{'gold_ema': 'red', 'gold_net_long': 'green', 'gold_oi': 'neutral', 'gold_etf': 'red', 'cb_gold': 'green'}",
    "inputs": {
-    "bullish": 1,
+    "bullish": 2,
     "usable": 5,
     "forced_red": false
    },
@@ -195,14 +195,14 @@
    "name": "沪铜区间位置",
    "light": "yellow",
    "value": "压力带",
-   "detail": "CU0 收盘 107,330,区间 95,000–110,000 内位置 82%。文章:95,000 下游愿意点价=支撑,105,000–110,000 有压力",
+   "detail": "CU0 收盘 108,400,区间 95,000–110,000 内位置 89%。文章:95,000 下游愿意点价=支撑,105,000–110,000 有压力",
    "inputs": {
-    "close": 107330.0,
-    "range_pos_pct": 82.2,
+    "close": 108400.0,
+    "range_pos_pct": 89.3,
     "consec_below_support": 0,
     "consec_above_top": 0
    },
-   "as_of": "2026-08-06",
+   "as_of": "2026-08-07",
    "stale": false
   },
   {
@@ -211,11 +211,11 @@
    "name": "回调性质判定",
    "light": "neutral",
    "value": "未触发",
-   "detail": "近20日 +4.0%,无≥3% 级别回调,判定不激活(仅在显著回调时区分'宏观风险'与'非宏观扰动')",
+   "detail": "近20日 +4.5%,无≥3% 级别回调,判定不激活(仅在显著回调时区分'宏观风险'与'非宏观扰动')",
    "inputs": {
-    "chg_20d_pct": 4.0
+    "chg_20d_pct": 4.5
    },
-   "as_of": "2026-08-06",
+   "as_of": "2026-08-07",
    "stale": false
   },
   {
@@ -224,14 +224,14 @@
    "name": "COPX 领先趋势",
    "light": "yellow",
    "value": "站上均线但斜率未转正",
-   "detail": "COPX 86.09 vs EMA50 79.99(上方),EMA 斜率向下;COPX 近20日跑赢沪铜 +10.1pp,关注铜补涨(文章:COPX 领先铜价)",
+   "detail": "COPX 88.03 vs EMA50 80.31(上方),EMA 斜率向下;COPX 近20日跑赢沪铜 +10.5pp,关注铜补涨(文章:COPX 领先铜价)",
    "inputs": {
-    "close": 86.09,
-    "ema": 79.99,
+    "close": 88.03,
+    "ema": 80.31,
     "above": true,
     "slope_up": false
    },
-   "as_of": "2026-08-06",
+   "as_of": "2026-08-07",
    "stale": false
   }
  ]
