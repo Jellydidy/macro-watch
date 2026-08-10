@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-08-07T23:07:37Z",
+ "generated_at": "2026-08-10T09:00:30Z",
  "scenario": {
   "lean": 0,
   "label": "情景不明朗",
@@ -8,7 +8,7 @@
    "10Y 利率 63日 +0.33pp",
    "纳指近期破前高=否;Capex放缓确认=否"
   ],
-  "as_of": "2026-08-07"
+  "as_of": "2026-08-10"
  },
  "signals": [
   {
@@ -76,14 +76,14 @@
    "name": "纳指 vs 前高(追铜信号)",
    "light": "yellow",
    "value": "逼近前高",
-   "detail": "纳指 26,348,距前252日高点 27,094 为 -2.8%。文章:纳指破前高=追铜信号。",
+   "detail": "纳指 26,691,距前252日高点 27,094 为 -1.5%。文章:纳指破前高=追铜信号。",
    "inputs": {
-    "close": 26348.35,
+    "close": 26690.62,
     "prior_high": 27093.9,
-    "gap_pct": -2.75,
+    "gap_pct": -1.49,
     "broke_recent": false
    },
-   "as_of": "2026-08-06",
+   "as_of": "2026-08-07",
    "stale": false
   },
   {
@@ -103,15 +103,15 @@
    "id": "gold_ema",
    "group": "gold",
    "name": "金价 vs EMA200",
-   "light": "red",
-   "value": "趋势线下方",
-   "detail": "国际金价(LBMA PM)4,267.9 vs EMA200 4,274.4,偏离 -0.2%。文章:黄金趋势性极强,均线上下区别巨大",
+   "light": "green",
+   "value": "站上长期趋势线",
+   "detail": "国际金价(LBMA PM)4,335.6 vs EMA200 4,275.1,偏离 +1.4%。文章:黄金趋势性极强,均线上下区别巨大",
    "inputs": {
-    "close": 4267.85,
-    "ema": 4274.4,
-    "dev_pct": -0.15
+    "close": 4335.55,
+    "ema": 4275.1,
+    "dev_pct": 1.42
    },
-   "as_of": "2026-08-06",
+   "as_of": "2026-08-07",
    "stale": false
   },
   {
@@ -179,10 +179,10 @@
    "group": "gold",
    "name": "黄金总灯",
    "light": "yellow",
-   "value": "看多条件 2/5",
-   "detail": "计数展示(非黑箱打分):EMA/净多头/OI/ETF/央行购金 五项中绿灯数;双杀组合触发时强制红灯。子信号状态:{'gold_ema': 'red', 'gold_net_long': 'green', 'gold_oi': 'neutral', 'gold_etf': 'red', 'cb_gold': 'green'}",
+   "value": "看多条件 3/5",
+   "detail": "计数展示(非黑箱打分):EMA/净多头/OI/ETF/央行购金 五项中绿灯数;双杀组合触发时强制红灯。子信号状态:{'gold_ema': 'green', 'gold_net_long': 'green', 'gold_oi': 'neutral', 'gold_etf': 'red', 'cb_gold': 'green'}",
    "inputs": {
-    "bullish": 2,
+    "bullish": 3,
     "usable": 5,
     "forced_red": false
    },
@@ -195,14 +195,14 @@
    "name": "沪铜区间位置",
    "light": "yellow",
    "value": "压力带",
-   "detail": "CU0 收盘 108,400,区间 95,000–110,000 内位置 89%。文章:95,000 下游愿意点价=支撑,105,000–110,000 有压力",
+   "detail": "CU0 收盘 107,850,区间 95,000–110,000 内位置 86%。文章:95,000 下游愿意点价=支撑,105,000–110,000 有压力",
    "inputs": {
-    "close": 108400.0,
-    "range_pos_pct": 89.3,
+    "close": 107850.0,
+    "range_pos_pct": 85.7,
     "consec_below_support": 0,
     "consec_above_top": 0
    },
-   "as_of": "2026-08-07",
+   "as_of": "2026-08-10",
    "stale": false
   },
   {
@@ -211,11 +211,11 @@
    "name": "回调性质判定",
    "light": "neutral",
    "value": "未触发",
-   "detail": "近20日 +4.5%,无≥3% 级别回调,判定不激活(仅在显著回调时区分'宏观风险'与'非宏观扰动')",
+   "detail": "近20日 +4.6%,无≥3% 级别回调,判定不激活(仅在显著回调时区分'宏观风险'与'非宏观扰动')",
    "inputs": {
-    "chg_20d_pct": 4.5
+    "chg_20d_pct": 4.6
    },
-   "as_of": "2026-08-07",
+   "as_of": "2026-08-10",
    "stale": false
   },
   {
@@ -224,7 +224,7 @@
    "name": "COPX 领先趋势",
    "light": "yellow",
    "value": "站上均线但斜率未转正",
-   "detail": "COPX 88.03 vs EMA50 80.31(上方),EMA 斜率向下;COPX 近20日跑赢沪铜 +10.5pp,关注铜补涨(文章:COPX 领先铜价)",
+   "detail": "COPX 88.03 vs EMA50 80.31(上方),EMA 斜率向下;COPX 近20日跑赢沪铜 +10.4pp,关注铜补涨(文章:COPX 领先铜价)",
    "inputs": {
     "close": 88.03,
     "ema": 80.31,
