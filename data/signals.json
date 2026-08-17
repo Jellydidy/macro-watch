@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-08-14T22:51:57Z",
+ "generated_at": "2026-08-17T08:10:24Z",
  "scenario": {
   "lean": 0,
   "label": "情景不明朗",
@@ -8,7 +8,7 @@
    "10Y 利率 63日 +0.17pp",
    "纳指近期破前高=否;Capex放缓确认=否"
   ],
-  "as_of": "2026-08-14"
+  "as_of": "2026-08-17"
  },
  "signals": [
   {
@@ -76,14 +76,14 @@
    "name": "纳指 vs 前高(追铜信号)",
    "light": "yellow",
    "value": "逼近前高",
-   "detail": "纳指 26,803,距前252日高点 27,094 为 -1.1%。文章:纳指破前高=追铜信号。",
+   "detail": "纳指 26,729,距前252日高点 27,094 为 -1.3%。文章:纳指破前高=追铜信号。",
    "inputs": {
-    "close": 26803.03,
+    "close": 26729.16,
     "prior_high": 27093.9,
-    "gap_pct": -1.07,
+    "gap_pct": -1.35,
     "broke_recent": false
    },
-   "as_of": "2026-08-13",
+   "as_of": "2026-08-14",
    "stale": false
   },
   {
@@ -105,13 +105,13 @@
    "name": "金价 vs EMA200",
    "light": "green",
    "value": "站上长期趋势线",
-   "detail": "国际金价(LBMA PM)4,373.0 vs EMA200 4,279.1,偏离 +2.2%。文章:黄金趋势性极强,均线上下区别巨大",
+   "detail": "国际金价(LBMA PM)4,390.7 vs EMA200 4,280.2,偏离 +2.6%。文章:黄金趋势性极强,均线上下区别巨大",
    "inputs": {
-    "close": 4373.0,
-    "ema": 4279.1,
-    "dev_pct": 2.2
+    "close": 4390.7,
+    "ema": 4280.2,
+    "dev_pct": 2.58
    },
-   "as_of": "2026-08-13",
+   "as_of": "2026-08-14",
    "stale": false
   },
   {
@@ -224,14 +224,14 @@
    "name": "COPX 领先趋势",
    "light": "green",
    "value": "铜矿股领先转强",
-   "detail": "COPX 85.52 vs EMA50 81.43(上方),EMA 斜率向上;COPX 近20日跑赢沪铜 +10.3pp,关注铜补涨(文章:COPX 领先铜价)",
+   "detail": "COPX 85.70 vs EMA50 81.60(上方),EMA 斜率向上;COPX 近20日跑赢沪铜 +12.7pp,关注铜补涨(文章:COPX 领先铜价)",
    "inputs": {
-    "close": 85.52,
-    "ema": 81.43,
+    "close": 85.7,
+    "ema": 81.6,
     "above": true,
     "slope_up": true
    },
-   "as_of": "2026-08-13",
+   "as_of": "2026-08-14",
    "stale": false
   }
  ]
