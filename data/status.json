@@ -1,10 +1,10 @@
 {
- "generated_at": "2026-08-28T19:34:40Z",
+ "generated_at": "2026-08-29T03:49:27Z",
  "sources": {
   "sina:CU0_daily": {
    "ok": true,
-   "last_attempt": "2026-08-28T19:34:32Z",
-   "last_success": "2026-08-28T19:34:32Z",
+   "last_attempt": "2026-08-29T03:49:19Z",
+   "last_success": "2026-08-29T03:49:19Z",
    "error": null,
    "rows": 5268,
    "latest_date": "2026-08-28",
@@ -12,8 +12,8 @@
   },
   "sina:CU0_realtime": {
    "ok": true,
-   "last_attempt": "2026-08-28T19:34:33Z",
-   "last_success": "2026-08-28T19:34:33Z",
+   "last_attempt": "2026-08-29T03:49:20Z",
+   "last_success": "2026-08-29T03:49:20Z",
    "error": null,
    "rows": 1,
    "latest_date": "2026-08-29",
@@ -21,8 +21,8 @@
   },
   "cot:gold": {
    "ok": true,
-   "last_attempt": "2026-08-28T19:34:37Z",
-   "last_success": "2026-08-28T19:34:37Z",
+   "last_attempt": "2026-08-29T03:49:24Z",
+   "last_success": "2026-08-29T03:49:24Z",
    "error": null,
    "rows": 1640,
    "latest_date": "2026-08-25",
@@ -30,8 +30,8 @@
   },
   "cot:copper": {
    "ok": true,
-   "last_attempt": "2026-08-28T19:34:38Z",
-   "last_success": "2026-08-28T19:34:38Z",
+   "last_attempt": "2026-08-29T03:49:26Z",
+   "last_success": "2026-08-29T03:49:26Z",
    "error": null,
    "rows": 1640,
    "latest_date": "2026-08-25",
@@ -39,7 +39,7 @@
   },
   "auto:gld_holdings": {
    "ok": false,
-   "last_attempt": "2026-08-28T19:34:39Z",
+   "last_attempt": "2026-08-29T03:49:27Z",
    "last_success": null,
    "error": "content-type 'application/pdf', expected csv",
    "rows": 0,
@@ -48,8 +48,8 @@
   },
   "manual:gold_etf_flows": {
    "ok": true,
-   "last_attempt": "2026-08-28T19:34:39Z",
-   "last_success": "2026-08-28T19:34:39Z",
+   "last_attempt": "2026-08-29T03:49:27Z",
+   "last_success": "2026-08-29T03:49:27Z",
    "error": null,
    "rows": 2,
    "latest_date": "2026-06",
@@ -57,8 +57,8 @@
   },
   "manual:central_bank_gold": {
    "ok": true,
-   "last_attempt": "2026-08-28T19:34:39Z",
-   "last_success": "2026-08-28T19:34:39Z",
+   "last_attempt": "2026-08-29T03:49:27Z",
+   "last_success": "2026-08-29T03:49:27Z",
    "error": null,
    "rows": 5,
    "latest_date": "2026Q1",
@@ -66,8 +66,8 @@
   },
   "manual:ai_capex": {
    "ok": true,
-   "last_attempt": "2026-08-28T19:34:39Z",
-   "last_success": "2026-08-28T19:34:39Z",
+   "last_attempt": "2026-08-29T03:49:27Z",
+   "last_success": "2026-08-29T03:49:27Z",
    "error": null,
    "rows": 1,
    "latest_date": "2026Q1",
@@ -75,35 +75,35 @@
   },
   "signals": {
    "ok": true,
-   "last_attempt": "2026-08-28T19:34:40Z",
-   "last_success": "2026-08-28T19:34:40Z",
+   "last_attempt": "2026-08-29T03:49:27Z",
+   "last_success": "2026-08-29T03:49:27Z",
    "error": null,
    "rows": 15,
-   "latest_date": "2026-08-28",
+   "latest_date": "2026-08-29",
    "freq": "daily"
   },
   "fred:T10YIE": {
    "ok": true,
-   "last_attempt": "2026-08-28T19:34:12Z",
-   "last_success": "2026-08-28T19:34:12Z",
+   "last_attempt": "2026-08-29T03:49:00Z",
+   "last_success": "2026-08-29T03:49:00Z",
+   "error": null,
+   "rows": 5919,
+   "latest_date": "2026-08-28",
+   "freq": "daily"
+  },
+  "fred:DFII10": {
+   "ok": true,
+   "last_attempt": "2026-08-29T03:49:01Z",
+   "last_success": "2026-08-29T03:49:01Z",
    "error": null,
    "rows": 5918,
    "latest_date": "2026-08-27",
    "freq": "daily"
   },
-  "fred:DFII10": {
-   "ok": true,
-   "last_attempt": "2026-08-28T19:34:14Z",
-   "last_success": "2026-08-28T19:34:14Z",
-   "error": null,
-   "rows": 5917,
-   "latest_date": "2026-08-26",
-   "freq": "daily"
-  },
   "fred:PCETRIM12M159SFRBDAL": {
    "ok": true,
-   "last_attempt": "2026-08-28T19:34:15Z",
-   "last_success": "2026-08-28T19:34:15Z",
+   "last_attempt": "2026-08-29T03:49:02Z",
+   "last_success": "2026-08-29T03:49:02Z",
    "error": null,
    "rows": 583,
    "latest_date": "2026-07-01",
@@ -111,44 +111,44 @@
   },
   "fred:DGS2": {
    "ok": true,
-   "last_attempt": "2026-08-28T19:34:16Z",
-   "last_success": "2026-08-28T19:34:16Z",
-   "error": null,
-   "rows": 12556,
-   "latest_date": "2026-08-26",
-   "freq": "daily"
-  },
-  "fred:DGS10": {
-   "ok": true,
-   "last_attempt": "2026-08-28T19:34:18Z",
-   "last_success": "2026-08-28T19:34:18Z",
-   "error": null,
-   "rows": 16148,
-   "latest_date": "2026-08-26",
-   "freq": "daily"
-  },
-  "fred:DGS30": {
-   "ok": true,
-   "last_attempt": "2026-08-28T19:34:22Z",
-   "last_success": "2026-08-28T19:34:22Z",
-   "error": null,
-   "rows": 12378,
-   "latest_date": "2026-08-26",
-   "freq": "daily"
-  },
-  "fred:T10Y2Y": {
-   "ok": true,
-   "last_attempt": "2026-08-28T19:34:23Z",
-   "last_success": "2026-08-28T19:34:23Z",
+   "last_attempt": "2026-08-29T03:49:03Z",
+   "last_success": "2026-08-29T03:49:03Z",
    "error": null,
    "rows": 12557,
    "latest_date": "2026-08-27",
    "freq": "daily"
   },
+  "fred:DGS10": {
+   "ok": true,
+   "last_attempt": "2026-08-29T03:49:04Z",
+   "last_success": "2026-08-29T03:49:04Z",
+   "error": null,
+   "rows": 16149,
+   "latest_date": "2026-08-27",
+   "freq": "daily"
+  },
+  "fred:DGS30": {
+   "ok": true,
+   "last_attempt": "2026-08-29T03:49:08Z",
+   "last_success": "2026-08-29T03:49:08Z",
+   "error": null,
+   "rows": 12379,
+   "latest_date": "2026-08-27",
+   "freq": "daily"
+  },
+  "fred:T10Y2Y": {
+   "ok": true,
+   "last_attempt": "2026-08-29T03:49:09Z",
+   "last_success": "2026-08-29T03:49:09Z",
+   "error": null,
+   "rows": 12558,
+   "latest_date": "2026-08-28",
+   "freq": "daily"
+  },
   "fred:UNRATE": {
    "ok": true,
-   "last_attempt": "2026-08-28T19:34:24Z",
-   "last_success": "2026-08-28T19:34:24Z",
+   "last_attempt": "2026-08-29T03:49:11Z",
+   "last_success": "2026-08-29T03:49:11Z",
    "error": null,
    "rows": 942,
    "latest_date": "2026-07-01",
@@ -156,8 +156,8 @@
   },
   "fred:FEDFUNDS": {
    "ok": true,
-   "last_attempt": "2026-08-28T19:34:25Z",
-   "last_success": "2026-08-28T19:34:25Z",
+   "last_attempt": "2026-08-29T03:49:12Z",
+   "last_success": "2026-08-29T03:49:12Z",
    "error": null,
    "rows": 865,
    "latest_date": "2026-07-01",
@@ -165,8 +165,8 @@
   },
   "fred:BAMLH0A0HYM2": {
    "ok": true,
-   "last_attempt": "2026-08-28T19:34:26Z",
-   "last_success": "2026-08-28T19:34:26Z",
+   "last_attempt": "2026-08-29T03:49:13Z",
+   "last_success": "2026-08-29T03:49:13Z",
    "error": null,
    "rows": 787,
    "latest_date": "2026-08-27",
@@ -174,8 +174,8 @@
   },
   "fred:DCOILWTICO": {
    "ok": true,
-   "last_attempt": "2026-08-28T19:34:28Z",
-   "last_success": "2026-08-28T19:34:28Z",
+   "last_attempt": "2026-08-29T03:49:14Z",
+   "last_success": "2026-08-29T03:49:14Z",
    "error": null,
    "rows": 10231,
    "latest_date": "2026-08-25",
@@ -183,29 +183,29 @@
   },
   "fred:NASDAQCOM": {
    "ok": true,
-   "last_attempt": "2026-08-28T19:34:29Z",
-   "last_success": "2026-08-28T19:34:29Z",
+   "last_attempt": "2026-08-29T03:49:15Z",
+   "last_success": "2026-08-29T03:49:15Z",
    "error": null,
-   "rows": 14008,
-   "latest_date": "2026-08-27",
+   "rows": 14009,
+   "latest_date": "2026-08-28",
    "freq": "daily"
   },
   "lbma:gold_pm": {
    "ok": true,
-   "last_attempt": "2026-08-28T19:34:34Z",
-   "last_success": "2026-08-28T19:34:34Z",
+   "last_attempt": "2026-08-29T03:49:21Z",
+   "last_success": "2026-08-29T03:49:21Z",
    "error": null,
-   "rows": 14671,
-   "latest_date": "2026-08-27",
+   "rows": 14672,
+   "latest_date": "2026-08-28",
    "freq": "daily"
   },
   "sina_us:copx": {
    "ok": true,
-   "last_attempt": "2026-08-28T19:34:36Z",
-   "last_success": "2026-08-28T19:34:36Z",
+   "last_attempt": "2026-08-29T03:49:23Z",
+   "last_success": "2026-08-29T03:49:23Z",
    "error": null,
-   "rows": 4114,
-   "latest_date": "2026-08-27",
+   "rows": 4115,
+   "latest_date": "2026-08-28",
    "freq": "daily"
   }
  },
@@ -214,7 +214,7 @@
    "price": 108570.0,
    "date": "2026-08-29",
    "time": "010000",
-   "fetched_at": "2026-08-28T19:34:33Z"
+   "fetched_at": "2026-08-29T03:49:20Z"
   }
  }
 }
