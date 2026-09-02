@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-02T00:26:13Z",
+ "generated_at": "2026-09-02T12:16:11Z",
  "scenario": {
   "lean": 0,
   "label": "情景不明朗",
@@ -74,16 +74,16 @@
    "id": "nasdaq_high",
    "group": "ai",
    "name": "纳指 vs 前高(追铜信号)",
-   "light": "yellow",
-   "value": "逼近前高",
-   "detail": "纳指 26,371,距前252日高点 27,094 为 -2.7%。文章:纳指破前高=追铜信号。",
+   "light": "neutral",
+   "value": "未破前高",
+   "detail": "纳指 26,100,距前252日高点 27,094 为 -3.7%。文章:纳指破前高=追铜信号。",
    "inputs": {
-    "close": 26370.89,
+    "close": 26099.77,
     "prior_high": 27093.9,
-    "gap_pct": -2.67,
+    "gap_pct": -3.67,
     "broke_recent": false
    },
-   "as_of": "2026-08-31",
+   "as_of": "2026-09-01",
    "stale": false
   },
   {
@@ -195,14 +195,14 @@
    "name": "沪铜区间位置",
    "light": "yellow",
    "value": "压力带",
-   "detail": "CU0 收盘 109,220,区间 95,000–110,000 内位置 95%。文章:95,000 下游愿意点价=支撑,105,000–110,000 有压力",
+   "detail": "CU0 收盘 108,040,区间 95,000–110,000 内位置 87%。文章:95,000 下游愿意点价=支撑,105,000–110,000 有压力",
    "inputs": {
-    "close": 109220.0,
-    "range_pos_pct": 94.8,
+    "close": 108040.0,
+    "range_pos_pct": 86.9,
     "consec_below_support": 0,
     "consec_above_top": 0
    },
-   "as_of": "2026-09-01",
+   "as_of": "2026-09-02",
    "stale": false
   },
   {
@@ -211,11 +211,11 @@
    "name": "回调性质判定",
    "light": "neutral",
    "value": "未触发",
-   "detail": "近20日 +2.4%,无≥3% 级别回调,判定不激活(仅在显著回调时区分'宏观风险'与'非宏观扰动')",
+   "detail": "近20日 +0.7%,无≥3% 级别回调,判定不激活(仅在显著回调时区分'宏观风险'与'非宏观扰动')",
    "inputs": {
-    "chg_20d_pct": 2.4
+    "chg_20d_pct": 0.7
    },
-   "as_of": "2026-09-01",
+   "as_of": "2026-09-02",
    "stale": false
   },
   {
@@ -224,7 +224,7 @@
    "name": "COPX 领先趋势",
    "light": "green",
    "value": "铜矿股领先转强",
-   "detail": "COPX 89.24 vs EMA50 85.70(上方),EMA 斜率向上",
+   "detail": "COPX 89.24 vs EMA50 85.70(上方),EMA 斜率向上;COPX 近20日跑赢沪铜 +5.6pp,关注铜补涨(文章:COPX 领先铜价)",
    "inputs": {
     "close": 89.24,
     "ema": 85.7,
