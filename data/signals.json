@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-10T00:27:51Z",
+ "generated_at": "2026-09-10T12:21:29Z",
  "scenario": {
   "lean": 3,
   "label": "倾向情景③:地缘不稳/滞胀(一票优先)",
@@ -74,16 +74,16 @@
    "id": "nasdaq_high",
    "group": "ai",
    "name": "纳指 vs 前高(追铜信号)",
-   "light": "yellow",
-   "value": "逼近前高",
-   "detail": "纳指 26,421,距前252日高点 27,094 为 -2.5%。文章:纳指破前高=追铜信号。",
+   "light": "neutral",
+   "value": "未破前高",
+   "detail": "纳指 26,253,距前252日高点 27,094 为 -3.1%。文章:纳指破前高=追铜信号。",
    "inputs": {
-    "close": 26421.41,
+    "close": 26253.34,
     "prior_high": 27093.9,
-    "gap_pct": -2.48,
+    "gap_pct": -3.1,
     "broke_recent": false
    },
-   "as_of": "2026-09-08",
+   "as_of": "2026-09-09",
    "stale": false
   },
   {
@@ -193,16 +193,16 @@
    "id": "cu_range",
    "group": "copper",
    "name": "沪铜区间位置",
-   "light": "yellow",
-   "value": "疑似突破(连续2收盘,需3日确认)",
-   "detail": "CU0 收盘 111,080,区间 95,000–110,000 内位置 107%。文章:95,000 下游愿意点价=支撑,105,000–110,000 有压力",
+   "light": "green",
+   "value": "向上突破(连续3收盘>110,000)",
+   "detail": "CU0 收盘 112,200,区间 95,000–110,000 内位置 115%。文章:95,000 下游愿意点价=支撑,105,000–110,000 有压力",
    "inputs": {
-    "close": 111080.0,
-    "range_pos_pct": 107.2,
+    "close": 112200.0,
+    "range_pos_pct": 114.7,
     "consec_below_support": 0,
-    "consec_above_top": 2
+    "consec_above_top": 3
    },
-   "as_of": "2026-09-09",
+   "as_of": "2026-09-10",
    "stale": false
   },
   {
@@ -211,11 +211,11 @@
    "name": "回调性质判定",
    "light": "neutral",
    "value": "未触发",
-   "detail": "近20日 +2.5%,无≥3% 级别回调,判定不激活(仅在显著回调时区分'宏观风险'与'非宏观扰动')",
+   "detail": "近20日 +4.5%,无≥3% 级别回调,判定不激活(仅在显著回调时区分'宏观风险'与'非宏观扰动')",
    "inputs": {
-    "chg_20d_pct": 2.5
+    "chg_20d_pct": 4.5
    },
-   "as_of": "2026-09-09",
+   "as_of": "2026-09-10",
    "stale": false
   },
   {
@@ -224,7 +224,7 @@
    "name": "COPX 领先趋势",
    "light": "green",
    "value": "铜矿股领先转强",
-   "detail": "COPX 95.27 vs EMA50 86.91(上方),EMA 斜率向上;COPX 近20日跑赢沪铜 +5.1pp,关注铜补涨(文章:COPX 领先铜价)",
+   "detail": "COPX 95.27 vs EMA50 86.91(上方),EMA 斜率向上",
    "inputs": {
     "close": 95.27,
     "ema": 86.91,
