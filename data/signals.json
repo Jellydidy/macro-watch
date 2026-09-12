@@ -1,14 +1,14 @@
 {
- "generated_at": "2026-09-11T12:20:06Z",
+ "generated_at": "2026-09-12T00:30:37Z",
  "scenario": {
   "lean": 3,
   "label": "倾向情景③:地缘不稳/滞胀(一票优先)",
   "conditions": [
    "WTI 63日 +6%(触发≥+20%),3年分位 95(触发≥90)",
-   "10Y 利率 63日 +0.30pp",
+   "10Y 利率 63日 +0.40pp",
    "纳指近期破前高=否;Capex放缓确认=否"
   ],
-  "as_of": "2026-09-11"
+  "as_of": "2026-09-12"
  },
  "signals": [
   {
@@ -17,13 +17,13 @@
    "name": "联储反应区间",
    "light": "yellow",
    "value": "按兵不动区",
-   "detail": "T10YIE=2.40(2026-09-10),TrimmedPCE=2.28(2026-07-01),Sahm gap=0.00(2026-08-01)。通胀预期 2.40 接近警戒位 2.5",
+   "detail": "T10YIE=2.36(2026-09-11),TrimmedPCE=2.28(2026-07-01),Sahm gap=0.00(2026-08-01)。距离鹰派警戒与降息条件均有距离",
    "inputs": {
-    "t10yie": 2.4,
+    "t10yie": 2.36,
     "trimmed_pce": 2.28,
     "sahm_gap": 0.0
    },
-   "as_of": "2026-09-10",
+   "as_of": "2026-09-11",
    "stale": false
   },
   {
@@ -44,30 +44,30 @@
    "id": "gold_double_kill",
    "group": "fed",
    "name": "黄金双杀组合",
-   "light": "green",
-   "value": "未触发",
-   "detail": "近20交易日:通胀预期 +0.14pp(触发≤-0.1),实际利率 +0.03pp(触发≥+0.1)。文章:'通胀预期回落+实际利率走高'是黄金最不利组合,一票否决",
+   "light": "yellow",
+   "value": "半条件",
+   "detail": "近20交易日:通胀预期 +0.12pp(触发≤-0.1),实际利率 +0.13pp(触发≥+0.1)。文章:'通胀预期回落+实际利率走高'是黄金最不利组合,一票否决",
    "inputs": {
-    "t10yie_d20": 0.14,
-    "dfii10_d20": 0.03
+    "t10yie_d20": 0.12,
+    "dfii10_d20": 0.13
    },
-   "as_of": "2026-09-10",
+   "as_of": "2026-09-11",
    "stale": false
   },
   {
    "id": "curve_steepening",
    "group": "fed",
    "name": "曲线陡峭化(市场自行收紧)",
-   "light": "green",
-   "value": "曲线平稳",
-   "detail": "10Y-2Y 近20日 -0.09pp(触发≥+0.15);30Y=5.28 vs 前252日高点 5.31(未破)",
+   "light": "red",
+   "value": "市场在自行收紧",
+   "detail": "10Y-2Y 近20日 -0.15pp(触发≥+0.15);30Y=5.37 vs 前252日高点 5.31(已破前高)",
    "inputs": {
-    "t10y2y_d20": -0.09,
-    "dgs30": 5.28,
+    "t10y2y_d20": -0.15,
+    "dgs30": 5.37,
     "dgs30_prior_high": 5.31,
-    "dgs30_broke": false
+    "dgs30_broke": true
    },
-   "as_of": "2026-09-10",
+   "as_of": "2026-09-11",
    "stale": false
   },
   {
@@ -105,13 +105,13 @@
    "name": "金价 vs EMA200",
    "light": "green",
    "value": "站上长期趋势线",
-   "detail": "国际金价(LBMA PM)4,365.4 vs EMA200 4,312.2,偏离 +1.2%。文章:黄金趋势性极强,均线上下区别巨大",
+   "detail": "国际金价(LBMA PM)4,386.2 vs EMA200 4,312.9,偏离 +1.7%。文章:黄金趋势性极强,均线上下区别巨大",
    "inputs": {
-    "close": 4365.45,
-    "ema": 4312.2,
-    "dev_pct": 1.24
+    "close": 4386.25,
+    "ema": 4312.9,
+    "dev_pct": 1.7
    },
-   "as_of": "2026-09-10",
+   "as_of": "2026-09-11",
    "stale": false
   },
   {
@@ -120,13 +120,13 @@
    "name": "CFTC 净多头分位",
    "light": "neutral",
    "value": "中性",
-   "detail": "非商业净多头 222,188(口径:legacy noncommercial,作管理基金代理),5年分位 66%,近4周 +31,540",
+   "detail": "非商业净多头 223,928(口径:legacy noncommercial,作管理基金代理),5年分位 67%,近4周 +9,072",
    "inputs": {
-    "net_long": 222188,
-    "pctile_5y": 65.8,
-    "delta_4w": 31540
+    "net_long": 223928,
+    "pctile_5y": 66.5,
+    "delta_4w": 9072
    },
-   "as_of": "2026-09-01",
+   "as_of": "2026-09-08",
    "stale": false
   },
   {
@@ -135,14 +135,14 @@
    "name": "COMEX 持仓量(OI)",
    "light": "green",
    "value": "见底反弹",
-   "detail": "OI=578,926,52周低点 434,790,反弹 +33.2%(触发≥+3% 且近4周走高)",
+   "detail": "OI=582,664,52周低点 434,790,反弹 +34.0%(触发≥+3% 且近4周走高)",
    "inputs": {
-    "oi": 578926,
+    "oi": 582664,
     "low_52w": 434790,
-    "rebound_pct": 33.2,
-    "delta_4w": 90614
+    "rebound_pct": 34.0,
+    "delta_4w": 18079
    },
-   "as_of": "2026-09-01",
+   "as_of": "2026-09-08",
    "stale": false
   },
   {
@@ -224,14 +224,14 @@
    "name": "COPX 领先趋势",
    "light": "green",
    "value": "铜矿股领先转强",
-   "detail": "COPX 88.61 vs EMA50 86.98(上方),EMA 斜率向上",
+   "detail": "COPX 88.53 vs EMA50 87.04(上方),EMA 斜率向上",
    "inputs": {
-    "close": 88.61,
-    "ema": 86.98,
+    "close": 88.53,
+    "ema": 87.04,
     "above": true,
     "slope_up": true
    },
-   "as_of": "2026-09-10",
+   "as_of": "2026-09-11",
    "stale": false
   }
  ]
