@@ -1,14 +1,14 @@
 {
- "generated_at": "2026-09-16T12:48:13Z",
+ "generated_at": "2026-09-17T00:49:02Z",
  "scenario": {
   "lean": 3,
   "label": "倾向情景③:地缘不稳/滞胀(一票优先)",
   "conditions": [
    "WTI 63日 +6%(触发≥+20%),3年分位 95(触发≥90)",
-   "10Y 利率 63日 +0.49pp",
+   "10Y 利率 63日 +0.53pp",
    "纳指近期破前高=否;Capex放缓确认=否"
   ],
-  "as_of": "2026-09-16"
+  "as_of": "2026-09-17"
  },
  "signals": [
   {
@@ -17,13 +17,13 @@
    "name": "联储反应区间",
    "light": "yellow",
    "value": "按兵不动区",
-   "detail": "T10YIE=2.38(2026-09-15),TrimmedPCE=2.28(2026-07-01),Sahm gap=0.00(2026-08-01)。距离鹰派警戒与降息条件均有距离",
+   "detail": "T10YIE=2.33(2026-09-16),TrimmedPCE=2.28(2026-07-01),Sahm gap=0.00(2026-08-01)。距离鹰派警戒与降息条件均有距离",
    "inputs": {
-    "t10yie": 2.38,
+    "t10yie": 2.33,
     "trimmed_pce": 2.28,
     "sahm_gap": 0.0
    },
-   "as_of": "2026-09-15",
+   "as_of": "2026-09-16",
    "stale": false
   },
   {
@@ -46,12 +46,12 @@
    "name": "黄金双杀组合",
    "light": "yellow",
    "value": "半条件",
-   "detail": "近20交易日:通胀预期 +0.10pp(触发≤-0.1),实际利率 +0.19pp(触发≥+0.1)。文章:'通胀预期回落+实际利率走高'是黄金最不利组合,一票否决",
+   "detail": "近20交易日:通胀预期 +0.03pp(触发≤-0.1),实际利率 +0.18pp(触发≥+0.1)。文章:'通胀预期回落+实际利率走高'是黄金最不利组合,一票否决",
    "inputs": {
-    "t10yie_d20": 0.1,
-    "dfii10_d20": 0.19
+    "t10yie_d20": 0.03,
+    "dfii10_d20": 0.18
    },
-   "as_of": "2026-09-15",
+   "as_of": "2026-09-16",
    "stale": false
   },
   {
@@ -60,14 +60,14 @@
    "name": "曲线陡峭化(市场自行收紧)",
    "light": "green",
    "value": "曲线平稳",
-   "detail": "10Y-2Y 近20日 -0.20pp(触发≥+0.15);30Y=5.34 vs 前252日高点 5.37(未破)",
+   "detail": "10Y-2Y 近20日 -0.25pp(触发≥+0.15);30Y=5.36 vs 前252日高点 5.37(未破)",
    "inputs": {
-    "t10y2y_d20": -0.2,
-    "dgs30": 5.34,
+    "t10y2y_d20": -0.25,
+    "dgs30": 5.36,
     "dgs30_prior_high": 5.37,
     "dgs30_broke": false
    },
-   "as_of": "2026-09-15",
+   "as_of": "2026-09-16",
    "stale": false
   },
   {
@@ -103,15 +103,15 @@
    "id": "gold_ema",
    "group": "gold",
    "name": "金价 vs EMA200",
-   "light": "red",
-   "value": "趋势线下方",
-   "detail": "国际金价(LBMA PM)4,296.1 vs EMA200 4,312.3,偏离 -0.4%。文章:黄金趋势性极强,均线上下区别巨大",
+   "light": "green",
+   "value": "站上长期趋势线",
+   "detail": "国际金价(LBMA PM)4,328.2 vs EMA200 4,312.5,偏离 +0.4%。文章:黄金趋势性极强,均线上下区别巨大",
    "inputs": {
-    "close": 4296.15,
-    "ema": 4312.3,
-    "dev_pct": -0.37
+    "close": 4328.2,
+    "ema": 4312.5,
+    "dev_pct": 0.37
    },
-   "as_of": "2026-09-15",
+   "as_of": "2026-09-16",
    "stale": false
   },
   {
@@ -178,11 +178,11 @@
    "id": "gold_composite",
    "group": "gold",
    "name": "黄金总灯",
-   "light": "red",
-   "value": "看多条件 1/3",
-   "detail": "计数展示(非黑箱打分):EMA/净多头/OI/ETF/央行购金 五项中绿灯数;双杀组合触发时强制红灯。子信号状态:{'gold_ema': 'red', 'gold_net_long': 'neutral', 'gold_oi': 'green', 'gold_etf': 'gray', 'cb_gold': 'gray'}",
+   "light": "yellow",
+   "value": "看多条件 2/3",
+   "detail": "计数展示(非黑箱打分):EMA/净多头/OI/ETF/央行购金 五项中绿灯数;双杀组合触发时强制红灯。子信号状态:{'gold_ema': 'green', 'gold_net_long': 'neutral', 'gold_oi': 'green', 'gold_etf': 'gray', 'cb_gold': 'gray'}",
    "inputs": {
-    "bullish": 1,
+    "bullish": 2,
     "usable": 3,
     "forced_red": false
    },
@@ -224,14 +224,14 @@
    "name": "COPX 领先趋势",
    "light": "red",
    "value": "趋势线下方",
-   "detail": "COPX 84.59 vs EMA50 86.89(下方),EMA 斜率向上",
+   "detail": "COPX 84.19 vs EMA50 86.78(下方),EMA 斜率向上",
    "inputs": {
-    "close": 84.59,
-    "ema": 86.89,
+    "close": 84.19,
+    "ema": 86.78,
     "above": false,
     "slope_up": true
    },
-   "as_of": "2026-09-15",
+   "as_of": "2026-09-16",
    "stale": false
   }
  ]
