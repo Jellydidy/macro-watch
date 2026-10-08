@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-08T02:12:47Z",
+ "generated_at": "2026-10-08T14:53:00Z",
  "scenario": {
   "lean": 3,
   "label": "倾向情景③:地缘不稳/滞胀(一票优先)",
@@ -76,14 +76,14 @@
    "name": "纳指 vs 前高(追铜信号)",
    "light": "green",
    "value": "追铜信号有效",
-   "detail": "纳指 27,600,距前252日高点 27,477 为 +0.4%。文章:纳指破前高=追铜信号。近20日内破位日:2026-10-06",
+   "detail": "纳指 27,539,距前252日高点 27,600 为 -0.2%。文章:纳指破前高=追铜信号。近20日内破位日:2026-10-06",
    "inputs": {
-    "close": 27599.89,
-    "prior_high": 27477.31,
-    "gap_pct": 0.45,
+    "close": 27538.69,
+    "prior_high": 27599.89,
+    "gap_pct": -0.22,
     "broke_recent": true
    },
-   "as_of": "2026-10-06",
+   "as_of": "2026-10-07",
    "stale": false
   },
   {
@@ -193,30 +193,30 @@
    "id": "cu_range",
    "group": "copper",
    "name": "沪铜区间位置",
-   "light": "gray",
-   "value": "压力带",
-   "detail": "[数据过期,信号不可信] CU0 收盘 109,680,区间 95,000–110,000 内位置 98%。文章:95,000 下游愿意点价=支撑,105,000–110,000 有压力",
+   "light": "yellow",
+   "value": "疑似突破(连续1收盘,需3日确认)",
+   "detail": "CU0 收盘 110,260,区间 95,000–110,000 内位置 102%。文章:95,000 下游愿意点价=支撑,105,000–110,000 有压力",
    "inputs": {
-    "close": 109680.0,
-    "range_pos_pct": 97.9,
+    "close": 110260.0,
+    "range_pos_pct": 101.7,
     "consec_below_support": 0,
-    "consec_above_top": 0
+    "consec_above_top": 1
    },
-   "as_of": "2026-09-30",
-   "stale": true
+   "as_of": "2026-10-08",
+   "stale": false
   },
   {
    "id": "cu_dip_type",
    "group": "copper",
    "name": "回调性质判定",
-   "light": "gray",
+   "light": "neutral",
    "value": "未触发",
-   "detail": "[数据过期,信号不可信] 近20日 +0.4%,无≥3% 级别回调,判定不激活(仅在显著回调时区分'宏观风险'与'非宏观扰动')",
+   "detail": "近20日 +2.1%,无≥3% 级别回调,判定不激活(仅在显著回调时区分'宏观风险'与'非宏观扰动')",
    "inputs": {
-    "chg_20d_pct": 0.4
+    "chg_20d_pct": 2.1
    },
-   "as_of": "2026-09-30",
-   "stale": true
+   "as_of": "2026-10-08",
+   "stale": false
   },
   {
    "id": "copx_trend",
@@ -224,7 +224,7 @@
    "name": "COPX 领先趋势",
    "light": "red",
    "value": "趋势线下方",
-   "detail": "COPX 83.58 vs EMA50 86.42(下方),EMA 斜率向下;COPX 近20日落后沪铜 -12.7pp,警惕铜价趋势转弱",
+   "detail": "COPX 83.58 vs EMA50 86.42(下方),EMA 斜率向下;COPX 近20日落后沪铜 -14.3pp,警惕铜价趋势转弱",
    "inputs": {
     "close": 83.58,
     "ema": 86.42,
